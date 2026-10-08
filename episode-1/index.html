@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark" data-contrast="normal" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Épisode 1 de la série Portfolio TSSR : construire pas à pas la structure HTML5 de base du portfolio, expliquée ligne par ligne pour les grands débutants." />
+  <meta name="author" content="Jean-Claude Lugo — Centre de Formation MODE 83" />
+  <meta name="theme-color" content="#060d1a" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192x192.png" />
+
+  <script src="js/script.js" defer></script>
+
+  <title>Épisode 1 — La base HTML5 du portfolio TSSR · Support pédagogique</title>
+</head>
+<body>
+
+  <a class="skip-link" href="#contenu">Passer au contenu principal</a>
+
+  <!-- Barre d'outils : réglages d'affichage + progression -->
+  <header class="toolbar" id="haut">
+    <div class="toolbar-inner">
+      <p class="toolbar-brand">
+        <span class="brand-prompt" aria-hidden="true">&gt;_</span>
+        <span>Portfolio TSSR <span class="brand-sep" aria-hidden="true">·</span> <strong>Épisode 1</strong></span>
+      </p>
+
+      <div class="toolbar-progress">
+        <label for="progression" class="progress-label">Progression de l'épisode : <strong id="progression-texte">0 %</strong></label>
+        <progress id="progression" max="100" value="0">0 %</progress>
+        <ol class="progress-steps" aria-hidden="true">
+          <li>0</li><li>25</li><li>50</li><li>75</li><li>100</li>
+        </ol>
+      </div>
+
+      <div class="toolbar-actions" role="group" aria-label="Réglages d'affichage">
+        <button type="button" class="tool-btn" id="btn-theme">
+          <span class="tool-icon" aria-hidden="true">☀️</span>
+          <span class="tool-text">Mode clair</span>
+        </button>
+        <button type="button" class="tool-btn" id="btn-contraste" aria-pressed="false">
+          <span class="tool-icon" aria-hidden="true">◐</span>
+          <span class="tool-text">Contraste renforcé</span>
+        </button>
+        <div class="font-tools" role="group" aria-label="Taille du texte">
+          <button type="button" class="tool-btn tool-square" id="btn-texte-moins" aria-label="Réduire le texte">A−</button>
+          <button type="button" class="tool-btn tool-square" id="btn-texte-normal" aria-label="Taille de texte normale">A</button>
+          <button type="button" class="tool-btn tool-square" id="btn-texte-plus" aria-label="Agrandir le texte">A+</button>
+          <output id="taille-texte" class="font-size-value" aria-live="polite">100 %</output>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <!-- Sommaire : navigation entre les sections -->
+    <nav class="sommaire" aria-labelledby="sommaire-titre">
+      <details class="sommaire-details" id="sommaire-details" open>
+        <summary class="sommaire-summary"><span id="sommaire-titre">Sommaire de l'épisode</span></summary>
+        <ol class="sommaire-liste">
+          <li><a href="#accueil">Présentation</a></li>
+          <li><a href="#objectifs">Objectif pédagogique</a></li>
+          <li><a href="#prerequis">Avant de commencer</a></li>
+          <li><a href="#ressources">Où trouver les informations ?</a></li>
+          <li><a href="#etapes">Construction étape par étape</a></li>
+          <li><a href="#lignes">Explication ligne par ligne</a></li>
+          <li><a href="#code">Code complet</a></li>
+          <li><a href="#resultat">Résultat dans le navigateur</a></li>
+          <li><a href="#tests">Test de validation</a></li>
+          <li><a href="#erreurs">Si ça ne fonctionne pas</a></li>
+          <li><a href="#qcm">Mini QCM</a></li>
+          <li><a href="#exercice">Exercice pratique</a></li>
+          <li><a href="#defi">Défi pour aller plus loin</a></li>
+          <li><a href="#episode-2">Dans l'épisode 2</a></li>
+        </ol>
+        <p class="sommaire-note">La progression compte les 14 sections consultées, le test de validation réussi et le QCM terminé.</p>
+        <button type="button" class="btn btn-ghost btn-small" id="btn-reset">Réinitialiser ma progression</button>
+      </details>
+    </nav>
+
+    <main id="contenu" tabindex="-1">
+
+      <!-- ============ 1. EN-TÊTE DE L'ÉPISODE ============ -->
+      <section class="hero card-section" id="accueil" aria-labelledby="titre-episode" data-progress>
+        <p class="hero-kicker"><span aria-hidden="true">//</span> Série « Portfolio TSSR » · 20 épisodes</p>
+        <h1 id="titre-episode">
+          <span class="hero-episode">Épisode 1</span>
+          Construire la base HTML5 du portfolio TSSR
+        </h1>
+        <ul class="hero-badges" aria-label="Informations sur l'épisode">
+          <li class="badge"><span class="badge-label">Niveau</span> Grand débutant</li>
+          <li class="badge"><span class="badge-label">Langage</span> HTML5</li>
+          <li class="badge"><span class="badge-label">Durée indicative</span> 20 à 30 min de vidéo · 1 h en séance</li>
+          <li class="badge"><span class="badge-label">Fichiers</span> index.html + config.js</li>
+        </ul>
+        <div class="hero-objective">
+          <p class="hero-objective-title">Objectif de l'épisode</p>
+          <p>Créer le dossier du projet, écrire le squelette HTML5 complet de la page, charger les six briques externes qui alimenteront tout le portfolio, et voir apparaître à l'écran le nom du candidat : <strong>Lucas Moreau</strong>, <strong>Technicien Supérieur Systèmes &amp; Réseaux</strong>.</p>
+        </div>
+        <div class="terminal" aria-label="Aperçu de ce que vous allez écrire">
+          <p class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span> portfolio-tssr/index.html</p>
+          <pre class="terminal-body"><code data-hl>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr" data-theme="dark" dir="ltr"&gt;
+  …
+  &lt;h1&gt;Lucas Moreau&lt;/h1&gt;
+  …
+&lt;/html&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ============ 2. OBJECTIF PÉDAGOGIQUE ============ -->
+      <section class="card-section" id="objectifs" aria-labelledby="titre-objectifs" data-progress>
+        <p class="section-kicker">Partie 2</p>
+        <h2 id="titre-objectifs">Objectif pédagogique</h2>
+        <p class="lead">À la fin de cet épisode, vous serez capable de créer la structure HTML5 de départ d'un véritable portfolio professionnel.</p>
+
+        <h3>Ce que vous saurez faire</h3>
+        <ul class="check-list">
+          <li>Créer un dossier de projet bien rangé et un fichier <code>index.html</code> qui s'ouvre dans un navigateur.</li>
+          <li>Expliquer à quoi sert chaque partie d'une page : la déclaration, la racine, l'en-tête invisible et le corps visible.</li>
+          <li>Écrire une balise, lui ajouter des attributs, et la refermer correctement.</li>
+          <li>Décrire la page aux moteurs de recherche grâce aux métadonnées.</li>
+          <li>Charger des fichiers externes (polices, bibliothèques, icônes) depuis Internet.</li>
+          <li>Afficher une petite icône dans l'onglet du navigateur.</li>
+          <li>Ouvrir les outils de développement du navigateur pour vérifier votre travail et repérer une erreur.</li>
+          <li>Retrouver vous-même, dans une documentation officielle, pourquoi une ligne s'écrit comme ça.</li>
+        </ul>
+
+        <h3>Les mots à connaître avant de commencer</h3>
+        <p>Chaque mot technique de l'épisode est expliqué ici, la première fois qu'il apparaît. Revenez à cette liste dès qu'un mot vous bloque.</p>
+        <dl class="glossaire">
+          <div><dt><dfn id="def-html">HTML</dfn></dt><dd>Le langage qui décrit le <em>contenu</em> d'une page web : « ceci est un titre », « ceci est un paragraphe ». Ce n'est pas un langage de programmation : il ne calcule rien, il structure.</dd></div>
+          <div><dt><dfn>HTML5</dfn></dt><dd>La version actuelle de HTML. Elle a ajouté des balises qui donnent du sens à la page, comme <code>&lt;main&gt;</code>. Aujourd'hui, on dit souvent simplement « HTML ».</dd></div>
+          <div><dt><dfn>Balise</dfn></dt><dd>Un mot entre chevrons, comme <code>&lt;h1&gt;</code>. La plupart vont par deux : une balise ouvrante <code>&lt;h1&gt;</code> et une balise fermante <code>&lt;/h1&gt;</code>, avec une barre oblique. Ce qui est entre les deux est le contenu.</dd></div>
+          <div><dt><dfn>Élément</dfn></dt><dd>L'ensemble « balise ouvrante + contenu + balise fermante ». Par exemple <code>&lt;h1&gt;Lucas Moreau&lt;/h1&gt;</code> est un élément.</dd></div>
+          <div><dt><dfn>Attribut</dfn></dt><dd>Une information supplémentaire écrite <em>dans</em> la balise ouvrante, sous la forme <code>nom="valeur"</code>. Exemple : <code>lang="fr"</code>.</dd></div>
+          <div><dt><dfn>Commentaire</dfn></dt><dd>Un texte écrit entre <code>&lt;!--</code> et <code>--&gt;</code> : le navigateur l'ignore complètement. Il sert à laisser des notes aux humains qui lisent le code.</dd></div>
+          <div><dt><dfn>CSS</dfn></dt><dd>Le langage qui décrit l'<em>apparence</em> : couleurs, polices, espacements. Nous l'écrirons à partir de l'épisode 2.</dd></div>
+          <div><dt><dfn>JavaScript</dfn></dt><dd>Le langage de programmation du navigateur : il rend la page interactive (boutons, animations…). Dans cet épisode, il n'apparaît que dans le petit fichier <code>config.js</code>.</dd></div>
+          <div><dt><dfn>URL</dfn></dt><dd>L'adresse d'un fichier ou d'une page, comme <code>https://fonts.googleapis.com</code>. Une seule lettre fausse et le fichier n'est plus trouvé.</dd></div>
+          <div><dt><dfn>Chemin de fichier</dfn></dt><dd>L'adresse d'un fichier <em>dans votre dossier</em>. <code>images/favicon-32x32.png</code> veut dire : « entre dans le dossier <code>images</code>, puis prends le fichier <code>favicon-32x32.png</code> ».</dd></div>
+          <div><dt><dfn>Bibliothèque</dfn></dt><dd>Du code déjà écrit par d'autres développeurs, que l'on réutilise au lieu de tout refaire. Bootstrap, Font Awesome, Animate.css et PDF.js sont des bibliothèques.</dd></div>
+          <div><dt><dfn>CDN</dfn></dt><dd><i lang="en">Content Delivery Network</i>, « réseau de distribution de contenu » : des serveurs répartis dans le monde qui stockent des fichiers populaires (comme Bootstrap) et vous les envoient depuis le serveur le plus proche.</dd></div>
+          <div><dt><dfn>Métadonnées</dfn></dt><dd>Des « données sur les données » : des informations <em>à propos</em> de la page (sa langue, sa description, son auteur), que le visiteur ne voit pas directement.</dd></div>
+          <div><dt><dfn>SEO</dfn></dt><dd><i lang="en">Search Engine Optimization</i>, le référencement : tout ce qui aide une page à être bien comprise et bien classée par les moteurs de recherche comme Google.</dd></div>
+          <div><dt><dfn>Responsive</dfn></dt><dd>Une page « responsive » (adaptative) s'ajuste à la taille de l'écran : ordinateur, tablette ou smartphone.</dd></div>
+          <div><dt><dfn>Accessibilité</dfn></dt><dd>Le fait qu'une page soit utilisable par tout le monde, y compris les personnes malvoyantes qui utilisent un <em>lecteur d'écran</em> (un logiciel qui lit la page à voix haute) ou celles qui naviguent uniquement au clavier.</dd></div>
+          <div><dt><dfn>Favicon</dfn></dt><dd>La petite icône affichée dans l'onglet du navigateur, à côté du titre de la page.</dd></div>
+          <div><dt><dfn>DOM</dfn></dt><dd><i lang="en">Document Object Model</i> : la représentation de la page que le navigateur construit en mémoire à partir de votre HTML. C'est ce que vous voyez dans l'onglet « Éléments » des outils de développement.</dd></div>
+          <div><dt><dfn>API</dfn></dt><dd><i lang="en">Application Programming Interface</i> : un ensemble de commandes prêtes à l'emploi qu'un programme met à disposition des autres. Exemple : <code>console.log()</code> fait partie de l'API du navigateur. Nous l'utiliserons dans <code>config.js</code>.</dd></div>
+          <div><dt><dfn>Outils de développement</dfn></dt><dd>Un panneau caché dans tous les navigateurs, qui montre l'intérieur de la page. On l'ouvre avec la touche <kbd>F12</kbd> (ou <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>I</kbd> sous Windows, <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> sur Mac). On y trouve les onglets <strong>Éléments</strong>, <strong>Console</strong> et <strong>Réseau</strong>.</dd></div>
+        </dl>
+      </section>
+
+      <!-- ============ 3. AVANT DE COMMENCER ============ -->
+      <section class="card-section" id="prerequis" aria-labelledby="titre-prerequis" data-progress>
+        <p class="section-kicker">Partie 3</p>
+        <h2 id="titre-prerequis">Avant de commencer</h2>
+        <p>Cochez chaque case quand l'étape est faite. Vos coches sont mémorisées sur cet ordinateur.</p>
+
+        <fieldset class="checklist" data-checklist="prerequis">
+          <legend>Ma préparation</legend>
+          <ul>
+            <li><label><input type="checkbox" /> <span>Installer puis ouvrir <strong>Visual Studio Code</strong> (VS Code), l'éditeur de code gratuit de Microsoft, téléchargeable sur <a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="ext">code.visualstudio.com</a>.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Créer un dossier nommé <code>portfolio-tssr</code> (par exemple dans « Documents »). Pas d'espace, pas d'accent dans le nom.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Dans VS Code : menu <strong>Fichier › Ouvrir le dossier…</strong>, puis choisir <code>portfolio-tssr</code>.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Créer le fichier <code>index.html</code> : clic sur l'icône « Nouveau fichier » à côté du nom du dossier, dans le panneau de gauche.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Vérifier l'extension : le fichier doit finir par <code>.html</code>, et surtout pas par <code>.html.txt</code>. Sous Windows, dans l'Explorateur : menu <strong>Affichage</strong>, puis cocher <strong>Extensions de noms de fichiers</strong>.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Créer aussi le fichier <code>config.js</code>, à côté de <code>index.html</code>.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Créer les dossiers <code>images</code> et <code>ressources</code>, puis copier les 4 icônes fournies dans <code>images</code>.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Disposer d'un navigateur moderne et à jour : Chrome, Edge ou Firefox.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Vérifier l'arborescence : elle doit ressembler exactement au schéma ci-dessous.</span></label></li>
+          </ul>
+        </fieldset>
+
+        <h3>L'arborescence du projet</h3>
+        <p>Une <dfn>arborescence</dfn>, c'est le plan de rangement de vos dossiers et fichiers, dessiné comme un arbre.</p>
+        <div class="tree-wrap">
+          <pre class="tree" aria-label="Arborescence du projet portfolio-tssr"><code><span class="tree-dir">portfolio-tssr/</span>
+│
+├── <span class="tree-file">index.html</span>
+├── <span class="tree-file">config.js</span>
+├── <span class="tree-dir">images/</span>
+│   ├── favicon-32x32.png
+│   ├── favicon-192x192.png
+│   ├── favicon-400x400.webp
+│   └── apple-touch-icon.png
+│
+└── <span class="tree-dir">ressources/</span></code></pre>
+        </div>
+
+        <dl class="tree-explain">
+          <div><dt><code>portfolio-tssr/</code></dt><dd>Le dossier racine : il contient <em>tout</em> le projet. Si vous déplacez le projet, déplacez ce dossier entier, sinon les chemins vers les images ne fonctionneront plus.</dd></div>
+          <div><dt><code>index.html</code></dt><dd>La page web elle-même. Le nom <code>index</code> est une convention : sur un serveur web, c'est le fichier ouvert automatiquement quand on visite un dossier.</dd></div>
+          <div><dt><code>config.js</code></dt><dd>Notre fichier de configuration JavaScript. Dans l'épisode 1, ce n'est qu'un squelette de 4 lignes qui affiche un message de vérification. Il gérera plus tard la clé Formspree du formulaire de contact.</dd></div>
+          <div><dt><code>images/</code></dt><dd>Toutes les images du site. Pour cet épisode : les 4 favicons. Le dossier fourni contient aussi d'autres images (les captures <code>exe-1.png</code> à <code>exe-6.png</code> et <code>favicon.png</code>) : laissez-les, elles serviront dans des épisodes suivants.</dd></div>
+          <div><dt><code>favicon-32x32.png</code></dt><dd>L'icône de l'onglet, 32 × 32 pixels.</dd></div>
+          <div><dt><code>favicon-192x192.png</code></dt><dd>Une version plus grande, pour les écrans haute définition et les raccourcis Android.</dd></div>
+          <div><dt><code>favicon-400x400.webp</code></dt><dd>Une version au format WebP, un format d'image moderne et léger.</dd></div>
+          <div><dt><code>apple-touch-icon.png</code></dt><dd>L'icône utilisée par l'iPhone et l'iPad quand on ajoute la page à l'écran d'accueil (180 × 180 pixels).</dd></div>
+          <div><dt><code>ressources/</code></dt><dd>Un dossier vide pour l'instant. Il accueillera plus tard des documents du projet, comme le CV au format PDF.</dd></div>
+        </dl>
+
+        <div class="callout callout-tip">
+          <p class="callout-title"><span aria-hidden="true">💡</span> Deux façons d'ouvrir la page</p>
+          <p><strong>Méthode simple :</strong> double-cliquez sur <code>index.html</code> dans l'Explorateur de fichiers. La page s'ouvre dans votre navigateur ; l'adresse commence par <code>file:///</code>.</p>
+          <p><strong>Méthode confortable (facultative) :</strong> l'extension VS Code <strong>Live Server</strong> recharge la page automatiquement à chaque enregistrement. Le projet de référence est d'ailleurs configuré pour elle (fichier <code>.vscode/settings.json</code>, port 5501). Une fois installée : clic droit sur <code>index.html</code> › <strong>Open with Live Server</strong>.</p>
+        </div>
+      </section>
+
+      <!-- ============ 4. RESSOURCES ============ -->
+      <section class="card-section" id="ressources" aria-labelledby="titre-ressources" data-progress>
+        <p class="section-kicker">Partie 4</p>
+        <h2 id="titre-ressources">Où trouver les informations ?</h2>
+        <p>Un développeur ne connaît pas tout par cœur : il sait <strong>où chercher</strong>. Voici les sources officielles qui ont permis d'écrire chaque ligne de l'épisode. Les liens marqués <span aria-hidden="true">↗</span> s'ouvrent dans un nouvel onglet.</p>
+
+        <div class="callout callout-info">
+          <p class="callout-title"><span aria-hidden="true">🔎</span> Reconnaître une source officielle</p>
+          <ul>
+            <li>Le site appartient à <strong>l'organisme qui crée l'outil</strong> : <code>getbootstrap.com</code> pour Bootstrap, <code>fontawesome.com</code> pour Font Awesome, <code>mozilla.github.io</code> pour PDF.js.</li>
+            <li>Ou à un organisme de <strong>référence reconnu</strong> : le WHATWG et le W3C écrivent les normes du Web ; MDN (Mozilla) est la documentation de référence utilisée par les professionnels.</li>
+            <li>La documentation indique <strong>la version</strong> dont elle parle (ex. « Bootstrap v5.3 »).</li>
+            <li>L'adresse commence par <code>https://</code> et le nom de domaine est bien orthographié.</li>
+          </ul>
+        </div>
+        <div class="callout callout-warn">
+          <p class="callout-title"><span aria-hidden="true">⚠️</span> Pourquoi éviter de copier du code d'une source inconnue ?</p>
+          <p>Une ligne <code>&lt;script src="…"&gt;</code> fait exécuter, dans le navigateur de <em>chaque visiteur</em>, le programme qui se trouve à cette adresse. Si l'adresse provient d'un site douteux, ce programme peut afficher des publicités, espionner les saisies ou rediriger vos visiteurs. Copiez donc les adresses des bibliothèques <strong>uniquement depuis leur site officiel</strong> ou un CDN reconnu (jsDelivr, cdnjs), et gardez un numéro de version précis, comme <code>bootstrap@5.3.0</code>, pour que le fichier ne change pas sans prévenir.</p>
+        </div>
+
+        <div class="resource-grid">
+          <article class="resource-card">
+            <h3>HTML5 — la norme officielle</h3>
+            <dl>
+              <dt>Rôle</dt><dd>Le texte qui définit officiellement chaque balise et chaque attribut.</dd>
+              <dt>Pourquoi on en a besoin</dt><dd>C'est la référence ultime en cas de doute, mais elle est très technique et en anglais.</dd>
+              <dt>Documentation</dt><dd><a href="https://html.spec.whatwg.org/multipage/" target="_blank" rel="noopener" class="ext">HTML Living Standard (WHATWG)</a></dd>
+              <dt>Lignes concernées</dt><dd>Toutes.</dd>
+            </dl>
+          </article>
+          <article class="resource-card">
+            <h3>MDN Web Docs</h3>
+            <dl>
+              <dt>Rôle</dt><dd>La documentation de référence du Web, rédigée par Mozilla et sa communauté, disponible en français.</dd>
+              <dt>Pourquoi on en a besoin</dt><dd>Chaque balise et chaque attribut y a sa page, avec une explication et des exemples.</dd>
+              <dt>Documentation</dt><dd><a href="https://developer.mozilla.org/fr/docs/Web/HTML" target="_blank" rel="noopener" class="ext">MDN — HTML</a></dd>
+              <dt>Comment chercher</dt><dd>Tapez <kbd>mdn</kbd> suivi du nom de la balise dans un moteur de recherche, par exemple « mdn meta charset ». Sur la page, lisez « Attributs » puis « Exemples ».</dd>
+              <dt>Lignes concernées</dt><dd>1 à 13, 20 à 39.</dd>
+            </dl>
+          </article>
+          <article class="resource-card">
+            <h3>Google Fonts</h3>
+            <dl>
+              <dt>Rôle</dt><dd>Un catalogue de polices de caractères gratuites, hébergées par Google.</dd>
+              <dt>Pourquoi on en a besoin</dt><dd>Pour charger nos trois polices : Syne (titres), IBM Plex Mono (style terminal), DM Sans (texte courant).</dd>
+              <dt>Documentation</dt><dd><a href="https://fonts.google.com/" target="_blank" rel="noopener" class="ext">fonts.google.com</a> · <a href="https://developers.google.com/fonts/docs/css2" target="_blank" rel="noopener" class="ext">Documentation de l'API CSS (en anglais)</a></dd>
+              <dt>Comment retrouver la ligne</dt><dd>Sur fonts.google.com, cherchez « Syne », cliquez sur <strong>Get font</strong>, ajoutez les deux autres polices, puis <strong>Get embed code</strong> : Google génère les lignes <code>&lt;link&gt;</code> 12, 13 et 14.</dd>
+              <dt>Lignes concernées</dt><dd>12, 13, 14.</dd>
+            </dl>
+          </article>
+          <article class="resource-card">
+            <h3>Bootstrap 5.3</h3>
+            <dl>
+              <dt>Rôle</dt><dd>Une bibliothèque CSS qui fournit une grille responsive, des conteneurs et des composants (barre de navigation, boutons…).</dd>
+              <dt>Pourquoi on en a besoin</dt><dd>Pour gagner du temps sur la mise en page responsive. Dans cet épisode, elle fournit la classe <code>container</code>.</dd>
+              <dt>Documentation</dt><dd><a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank" rel="noopener" class="ext">Bootstrap — Get started</a> · <a href="https://getbootstrap.com/docs/5.3/layout/containers/" target="_blank" rel="noopener" class="ext">Bootstrap — Containers</a></dd>
+              <dt>Comment retrouver la ligne</dt><dd>Page « Get started », partie « Quick start » : la ligne <code>&lt;link&gt;</code> vers <code>cdn.jsdelivr.net</code> y est donnée à copier.</dd>
+              <dt>Lignes concernées</dt><dd>16, 33.</dd>
+            </dl>
+          </article>
+          <article class="resource-card">
+            <h3>Font Awesome 6</h3>
+            <dl>
+              <dt>Rôle</dt><dd>Une bibliothèque de plusieurs milliers d'icônes (serveur, réseau, bouclier, e-mail…).</dd>
+              <dt>Pourquoi on en a besoin</dt><dd>Pour illustrer le portfolio d'icônes nettes à toutes les tailles, sans créer d'images.</dd>
+              <dt>Documentation</dt><dd><a href="https://fontawesome.com/" target="_blank" rel="noopener" class="ext">fontawesome.com</a> · <a href="https://docs-v6.fontawesome.com/web/setup/get-started" target="_blank" rel="noopener" class="ext">Documentation v6 — Quick Start</a> · <a href="https://cdnjs.com/libraries/font-awesome" target="_blank" rel="noopener" class="ext">Font Awesome sur cdnjs</a></dd>
+              <dt>Comment retrouver la ligne</dt><dd>Sur cdnjs, cherchez « font-awesome », choisissez la version <strong>6.4.0</strong> et copiez l'adresse du fichier <code>css/all.min.css</code>.</dd>
+              <dt>Lignes concernées</dt><dd>17.</dd>
+            </dl>
+          </article>
+          <article class="resource-card">
+            <h3>Animate.css</h3>
+            <dl>
+              <dt>Rôle</dt><dd>Une bibliothèque d'animations CSS toutes prêtes (apparition, rebond…), activées en ajoutant une classe.</dd>
+              <dt>Pourquoi on en a besoin</dt><dd>Elle fait partie du socle du portfolio de référence, qui la charge dès le départ.</dd>
+              <dt>Documentation</dt><dd><a href="https://animate.style/" target="_blank" rel="noopener" class="ext">animate.style</a></dd>
+              <dt>Comment retrouver la ligne</dt><dd>Sur animate.style, partie « Installation » : la ligne <code>&lt;link&gt;</code> vers cdnjs (version 4.1.1) y est donnée.</dd>
+              <dt>Lignes concernées</dt><dd>18.</dd>
+            </dl>
+          </article>
+          <article class="resource-card">
+            <h3>PDF.js</h3>
+            <dl>
+              <dt>Rôle</dt><dd>Une bibliothèque JavaScript de Mozilla qui sait lire un fichier PDF directement dans le navigateur.</dd>
+              <dt>Pourquoi on en a besoin</dt><dd>Plus tard dans la série, elle permettra d'importer un CV au format PDF et d'en extraire le texte, sans serveur.</dd>
+              <dt>Documentation</dt><dd><a href="https://mozilla.github.io/pdf.js/" target="_blank" rel="noopener" class="ext">PDF.js (site officiel)</a> · <a href="https://cdnjs.com/libraries/pdf.js" target="_blank" rel="noopener" class="ext">PDF.js sur cdnjs</a></dd>
+              <dt>Comment retrouver la ligne</dt><dd>Sur cdnjs, cherchez « pdf.js », choisissez la version <strong>3.11.174</strong> et copiez l'adresse de <code>pdf.min.js</code>.</dd>
+              <dt>Lignes concernées</dt><dd>21.</dd>
+            </dl>
+          </article>
+          <article class="resource-card">
+            <h3>Favicons</h3>
+            <dl>
+              <dt>Rôle</dt><dd>Les icônes de l'onglet et de l'écran d'accueil.</dd>
+              <dt>Documentation</dt><dd><a href="https://developer.mozilla.org/fr/docs/Glossary/Favicon" target="_blank" rel="noopener" class="ext">MDN — Favicon</a> · <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Attributes/rel" target="_blank" rel="noopener" class="ext">MDN — l'attribut rel</a></dd>
+              <dt>Où regarder</dt><dd>Sur la page « rel », lisez les parties <code>icon</code> et <code>apple-touch-icon</code>.</dd>
+              <dt>Lignes concernées</dt><dd>23 à 26.</dd>
+            </dl>
+          </article>
+          <article class="resource-card">
+            <h3>Métadonnées et référencement</h3>
+            <dl>
+              <dt>Rôle</dt><dd>Comprendre ce que les moteurs de recherche lisent dans le <code>&lt;head&gt;</code>.</dd>
+              <dt>Documentation</dt><dd><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/meta/name" target="_blank" rel="noopener" class="ext">MDN — meta name</a> · <a href="https://developers.google.com/search/docs/crawling-indexing/special-tags" target="_blank" rel="noopener" class="ext">Google Search Central — balises meta prises en charge</a></dd>
+              <dt>Bon à savoir</dt><dd>La documentation de Google précise que la balise <code>keywords</code> n'est <strong>pas</strong> utilisée par Google Search. C'est un bon exemple de l'intérêt de vérifier à la source.</dd>
+              <dt>Lignes concernées</dt><dd>5 à 10, 28.</dd>
+            </dl>
+          </article>
+          <article class="resource-card">
+            <h3>Accessibilité</h3>
+            <dl>
+              <dt>Rôle</dt><dd>Les règles internationales pour rendre une page utilisable par tous.</dd>
+              <dt>Documentation</dt><dd><a href="https://www.w3.org/WAI/standards-guidelines/wcag/fr" target="_blank" rel="noopener" class="ext">W3C — Présentation des WCAG (en français)</a> · <a href="https://developer.mozilla.org/fr/docs/Glossary/Accessibility" target="_blank" rel="noopener" class="ext">MDN — Accessibilité</a></dd>
+              <dt>Dans cet épisode</dt><dd><code>lang="fr"</code> (ligne 2), <code>&lt;main id="main-content"&gt;</code> (ligne 32) et un seul titre <code>&lt;h1&gt;</code> (ligne 34) sont nos premiers gestes d'accessibilité.</dd>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ 5. CONSTRUCTION ÉTAPE PAR ÉTAPE ============ -->
+      <section class="card-section" id="etapes" aria-labelledby="titre-etapes" data-progress>
+        <p class="section-kicker">Partie 5</p>
+        <h2 id="titre-etapes">Construction étape par étape</h2>
+        <p>On construit le fichier petit à petit. À chaque étape, suivez toujours le même cycle :</p>
+        <ol class="cycle">
+          <li><span class="cycle-num">1</span> <strong>Écrire</strong> les lignes</li>
+          <li><span class="cycle-num">2</span> <strong>Enregistrer</strong> : <kbd>Ctrl</kbd>+<kbd>S</kbd> (<kbd>Cmd</kbd>+<kbd>S</kbd> sur Mac)</li>
+          <li><span class="cycle-num">3</span> <strong>Actualiser</strong> le navigateur : <kbd>F5</kbd></li>
+          <li><span class="cycle-num">4</span> <strong>Observer</strong> le résultat</li>
+          <li><span class="cycle-num">5</span> <strong>Comprendre</strong> ce qui a changé</li>
+        </ol>
+        <div class="callout callout-tip">
+          <p class="callout-title"><span aria-hidden="true">💡</span> L'indentation</p>
+          <p>L'<dfn>indentation</dfn>, ce sont les espaces au début d'une ligne. Ils ne changent rien pour le navigateur, mais ils montrent aux humains quelle balise est « rangée » dans quelle autre. Règle de la série : <strong>2 espaces</strong> de plus à chaque niveau. Dans VS Code, la touche <kbd>Tab</kbd> les ajoute pour vous.</p>
+        </div>
+
+        <div class="steps">
+          <details class="step">
+            <summary><span class="step-num">Étape 1</span> Créer le fichier <code>index.html</code></summary>
+            <div class="step-body">
+              <p><strong>Faites :</strong> dans VS Code, ouvrez le dossier <code>portfolio-tssr</code> et créez le fichier <code>index.html</code>. Laissez-le vide, enregistrez, puis double-cliquez dessus dans l'Explorateur de fichiers.</p>
+              <p class="step-result"><span class="step-result-label">Vous voyez :</span> une page entièrement blanche. L'onglet affiche « index.html ». C'est normal : le fichier existe, mais il est vide.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 2</span> Déclarer HTML5 avec <code>&lt;!DOCTYPE html&gt;</code></summary>
+            <div class="step-body">
+              <p><strong>Écrivez</strong> sur la toute première ligne :</p>
+              <pre class="code-snippet"><code data-hl>&lt;!DOCTYPE html&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Vous voyez :</span> toujours une page blanche. Pour <em>vérifier</em> l'effet, ouvrez les outils de développement (<kbd>F12</kbd>), cliquez sur l'onglet <strong>Console</strong>, tapez <code>document.compatMode</code> puis <kbd>Entrée</kbd>. La réponse <code>'CSS1Compat'</code> signifie « mode standard » : le navigateur a compris qu'il s'agit d'une page HTML5 moderne.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 3</span> Créer <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> et <code>&lt;body&gt;</code>, avec un premier contenu</summary>
+            <div class="step-body">
+              <p><strong>Écrivez</strong> sous le DOCTYPE :</p>
+              <pre class="code-snippet"><code data-hl>&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+      &lt;h1&gt;Lucas Moreau&lt;/h1&gt;
+      &lt;p&gt;Technicien Supérieur Systèmes &amp;amp; Réseaux&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Vous voyez :</span> « Lucas Moreau » en grand, et le métier en dessous, dans une police avec empattements (petits « pieds » au bas des lettres, comme Times New Roman). C'est le style par défaut du navigateur. Si « Supérieur » s'affiche avec des caractères étranges, pas de panique : l'étape 7 va le corriger.</p>
+              <p><strong>Comprendre :</strong> <code>&lt;head&gt;</code> contient ce que le visiteur ne voit pas, <code>&lt;body&gt;</code> ce qu'il voit. <code>&amp;amp;</code> est la façon propre d'écrire le caractère « &amp; » en HTML.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 4</span> Ajouter <code>lang="fr"</code></summary>
+            <div class="step-body">
+              <p><strong>Modifiez</strong> la balise ouvrante :</p>
+              <pre class="code-snippet"><code data-hl>&lt;html lang="fr"&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Vous voyez :</span> rien ne change à l'écran. Mais dans <kbd>F12</kbd> › onglet <strong>Éléments</strong>, la balise <code>&lt;html lang="fr"&gt;</code> apparaît. Le navigateur sait désormais que la page est en français : il ne vous proposera plus de la traduire, et un lecteur d'écran la lira avec une voix française.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 5</span> Ajouter <code>data-theme="dark"</code></summary>
+            <div class="step-body">
+              <pre class="code-snippet"><code data-hl>&lt;html lang="fr" data-theme="dark"&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Vous voyez :</span> la page reste blanche. <strong>C'est voulu.</strong> Cet attribut est une étiquette que nous avons inventée ; aucun CSS ne la lit encore. À l'épisode 2, nos couleurs viendront s'y brancher, et plus tard un bouton JavaScript fera passer sa valeur de <code>dark</code> à <code>light</code>.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 6</span> Ajouter <code>dir="ltr"</code></summary>
+            <div class="step-body">
+              <pre class="code-snippet"><code data-hl>&lt;html lang="fr" data-theme="dark" dir="ltr"&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Expérience :</span> remplacez provisoirement <code>ltr</code> par <code>rtl</code>, enregistrez, actualisez : le texte se colle à droite, comme pour une page en arabe ou en hébreu. Remettez <code>ltr</code> (de gauche à droite) : le texte revient à gauche.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 7</span> Ajouter l'encodage <code>&lt;meta charset="UTF-8" /&gt;</code></summary>
+            <div class="step-body">
+              <p><strong>Écrivez</strong> juste après <code>&lt;head&gt;</code>, en décalant de 2 espaces :</p>
+              <pre class="code-snippet"><code data-hl>  &lt;meta charset="UTF-8" /&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Vous voyez :</span> les accents de « Supérieur » et « Réseaux » s'affichent correctement, quel que soit le navigateur.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 8</span> Ajouter le titre de l'onglet <code>&lt;title&gt;</code></summary>
+            <div class="step-body">
+              <p><strong>Écrivez</strong> juste avant <code>&lt;/head&gt;</code>. Cette ligne restera toujours la dernière du <code>&lt;head&gt;</code> : les étapes suivantes s'insèrent au-dessus d'elle.</p>
+              <pre class="code-snippet"><code data-hl>  &lt;title&gt;Portfolio TSSR | Recherche d'emploi – Technicien Systèmes &amp;amp; Réseaux · MODE 83 Draguignan&lt;/title&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Vous voyez :</span> l'onglet du navigateur n'affiche plus « index.html » mais « Portfolio TSSR | Recherche d'emploi… ». Survolez l'onglet avec la souris pour lire le titre entier.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 9</span> Ajouter la balise viewport (responsive)</summary>
+            <div class="step-body">
+              <p><strong>Écrivez</strong> sous la ligne <code>charset</code> :</p>
+              <pre class="code-snippet"><code data-hl>  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Pour l'observer :</span> dans <kbd>F12</kbd>, cliquez sur l'icône représentant un téléphone et une tablette (ou <kbd>Ctrl</kbd>+<kbd>Maj</kbd>+<kbd>M</kbd> dans Chrome et Edge) et choisissez un modèle de smartphone. Le texte a une taille lisible. Sans cette ligne, un vrai téléphone afficherait la page comme un écran d'ordinateur rétréci, avec un texte minuscule.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 10</span> Ajouter les métadonnées : description, mots-clés, robots, couleur, auteur</summary>
+            <div class="step-body">
+              <p><strong>Écrivez</strong> les lignes 6 à 10 sous le viewport (copiez-les depuis la partie « Code complet » pour éviter les fautes de frappe dans les longs textes).</p>
+              <pre class="code-snippet"><code data-hl>  &lt;meta name="robots" content="index, follow" /&gt;
+  &lt;meta name="theme-color" content="#060d1a" /&gt;
+  &lt;meta name="author" content="Lucas Moreau" /&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Pour l'observer :</span> ces informations sont destinées aux moteurs de recherche et au navigateur, pas au visiteur. Faites un clic droit sur la page › <strong>Afficher le code source de la page</strong> (<kbd>Ctrl</kbd>+<kbd>U</kbd>) : vos lignes y sont. Sur un smartphone Android avec Chrome, la barre d'adresse prendrait la couleur bleu nuit <code>#060d1a</code>.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 11</span> Charger les polices Google Fonts</summary>
+            <div class="step-body">
+              <p><strong>Laissez une ligne vide</strong> après l'auteur, puis écrivez les lignes 12 à 14 (copiez la longue adresse de la ligne 14 depuis le code complet).</p>
+              <pre class="code-snippet"><code data-hl>  &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+  &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Pour l'observer :</span> le texte ne change pas encore de police, c'est normal : le CSS qui utilisera ces polices arrive à l'épisode 2. Vérifiez le chargement : <kbd>F12</kbd> › onglet <strong>Réseau</strong>, puis <kbd>F5</kbd>. Une ligne <code>css2?family=Syne…</code> avec le statut <strong>200</strong> veut dire « fichier reçu ».</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 12</span> Charger Bootstrap</summary>
+            <div class="step-body">
+              <pre class="code-snippet"><code data-hl>  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" /&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Vous voyez :</span> premier changement visible ! La police à empattements disparaît, remplacée par la police système de votre ordinateur, et la marge blanche autour du texte disparaît. Bootstrap a appliqué son propre style de base.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 13</span> Charger Font Awesome et Animate.css</summary>
+            <div class="step-body">
+              <pre class="code-snippet"><code data-hl>  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /&gt;
+
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Test facultatif (à retirer ensuite) :</span> remplacez provisoirement <code>&lt;h1&gt;</code> par <code>&lt;h1 class="animate__animated animate__fadeIn"&gt;</code> : le nom apparaît en fondu à chaque actualisation. Animate.css fonctionne. Remettez ensuite <code>&lt;h1&gt;</code> tout simple : le fichier de l'épisode 1 doit rester identique au code de référence.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 14</span> Relier <code>config.js</code></summary>
+            <div class="step-body">
+              <p><strong>Dans <code>index.html</code></strong>, écrivez :</p>
+              <pre class="code-snippet"><code data-hl>  &lt;script src="config.js"&gt;&lt;/script&gt;</code></pre>
+              <p><strong>Dans <code>config.js</code></strong>, écrivez les 4 lignes du squelette (voir l'onglet <code>config.js</code> dans la partie « Code complet »).</p>
+              <p class="step-result"><span class="step-result-label">Vous voyez :</span> dans <kbd>F12</kbd> › <strong>Console</strong>, le message <code>config.js chargé ✔</code>. La preuve que les deux fichiers communiquent.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 15</span> Charger PDF.js</summary>
+            <div class="step-body">
+              <pre class="code-snippet"><code data-hl>  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"&gt;&lt;/script&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Pour l'observer :</span> dans la <strong>Console</strong>, tapez <code>pdfjsLib.version</code> puis <kbd>Entrée</kbd>. La réponse <code>'3.11.174'</code> prouve que la bibliothèque est chargée et prête pour les épisodes suivants.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 16</span> Ajouter les 4 favicons</summary>
+            <div class="step-body">
+              <pre class="code-snippet"><code data-hl>  &lt;link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png"&gt;
+  &lt;link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192x192.png"&gt;
+  &lt;link rel="icon" type="image/webp" href="images/favicon-400x400.webp"&gt;
+  &lt;link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png"&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Vous voyez :</span> le logo rond « Portfolio – Formation TSSR » dans l'onglet. S'il n'apparaît pas, actualisez avec <kbd>Ctrl</kbd>+<kbd>F5</kbd> (le navigateur garde parfois l'ancienne icône en mémoire) ou ouvrez la page avec Live Server.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 17</span> Ranger le contenu dans <code>&lt;main&gt;</code> et le conteneur Bootstrap</summary>
+            <div class="step-body">
+              <pre class="code-snippet"><code data-hl>&lt;body&gt;
+  &lt;main id="main-content"&gt;
+    &lt;div class="container"&gt;
+      &lt;h1&gt;Lucas Moreau&lt;/h1&gt;
+      &lt;p&gt;Technicien Supérieur Systèmes &amp;amp; Réseaux&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/body&gt;</code></pre>
+              <p class="step-result"><span class="step-result-label">Vous voyez :</span> le texte se décale du bord gauche. Agrandissez puis rétrécissez la fenêtre : sur un grand écran, le bloc reste centré avec une largeur maximale ; sur un petit écran, il occupe toute la largeur avec une petite marge.</p>
+            </div>
+          </details>
+
+          <details class="step">
+            <summary><span class="step-num">Étape 18</span> Relire, indenter, comparer</summary>
+            <div class="step-body">
+              <p><strong>Faites :</strong> clic droit dans le code › <strong>Mettre en forme le document</strong> (ou <kbd>Maj</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd> sous Windows) pour remettre l'indentation d'aplomb. Puis comparez votre fichier, ligne par ligne, avec le code complet ci-dessous.</p>
+              <p class="step-result"><span class="step-result-label">Vous avez terminé</span> quand votre fichier fait 39 lignes, identiques au code de référence. Passez au test de validation.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ============ 6. EXPLICATION LIGNE PAR LIGNE ============ -->
+      <section class="card-section" id="lignes" aria-labelledby="titre-lignes" data-progress>
+        <p class="section-kicker">Partie 6 · la plus importante</p>
+        <h2 id="titre-lignes">Explication ligne par ligne</h2>
+        <p>Chaque fiche répond à quatre questions : <strong>Quoi ?</strong> (ce que fait la ligne), <strong>Pourquoi ?</strong> (pourquoi elle est nécessaire), <strong>Comment ?</strong> (comment elle s'écrit, morceau par morceau) et <strong>Où ?</strong> (où retrouver l'information). Les numéros correspondent au code complet.</p>
+        <div class="callout callout-info">
+          <p class="callout-title"><span aria-hidden="true">🧩</span> Une ligne = plusieurs informations</p>
+          <p>Une seule ligne de code peut contenir plusieurs informations différentes. La ligne 2, par exemple, en contient quatre : une balise et trois attributs. C'est pourquoi les fiches les plus riches ont une partie <strong>Décomposition</strong>, qui découpe la ligne morceau par morceau.</p>
+        </div>
+
+        <div class="fiche-tools">
+          <button type="button" class="btn btn-ghost" id="btn-fiches-ouvrir">Ouvrir toutes les fiches</button>
+          <button type="button" class="btn btn-ghost" id="btn-fiches-fermer">Fermer toutes les fiches</button>
+        </div>
+
+        <h3 class="fiche-group-title">Le fichier <code>index.html</code></h3>
+        <p class="fiche-group-note">Lignes vides (11, 15, 19, 22, 27 et 30) : elles ne font rien pour le navigateur. Elles aèrent le code en séparant les groupes de lignes, comme des paragraphes dans un texte.</p>
+
+        <div class="fiches">
+
+          <!-- Ligne 1 -->
+          <article class="fiche" data-file="index" data-line="1" id="l1">
+            <details>
+              <summary><span class="fiche-num">Ligne 1</span> <span class="fiche-label">La déclaration HTML5</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>&lt;!DOCTYPE html&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle annonce au navigateur : « ce fichier est une page HTML moderne (HTML5) ».</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Le navigateur sait afficher des pages écrites il y a 25 ans comme des pages récentes. Cette ligne lui dit d'appliquer les règles actuelles, appelées « mode standard ».</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le navigateur passerait en <dfn>mode quirks</dfn> (« mode bizarreries ») : il imiterait d'anciens navigateurs, et certaines règles CSS des épisodes suivants seraient mal interprétées (tailles, marges). Vérification : dans la Console, <code>document.compatMode</code> afficherait <code>'BackCompat'</code> au lieu de <code>'CSS1Compat'</code>.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>&lt;!</code> … <code>&gt;</code></dt><dd>Une instruction spéciale, pas une balise ordinaire : elle n'a pas de balise fermante.</dd>
+                  <dt><code>DOCTYPE</code></dt><dd>Abréviation de <i lang="en">document type</i>, « type de document ». Majuscules ou minuscules : les deux fonctionnent.</dd>
+                  <dt><code>html</code></dt><dd>Le type annoncé : HTML, dans sa version actuelle.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Glossary/Doctype" target="_blank" rel="noopener" class="ext">MDN — Doctype (glossaire)</a></li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Guides/Quirks_mode_and_standards_mode" target="_blank" rel="noopener" class="ext">MDN — Comprendre les modes quirks et standards</a></li>
+                  <li>Terme à rechercher : <kbd>mdn doctype</kbd></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">La carte d'identité du fichier : on la montre en premier, avant toute chose.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 2 -->
+          <article class="fiche" data-file="index" data-line="2" id="l2">
+            <details>
+              <summary><span class="fiche-num">Ligne 2</span> <span class="fiche-label">La balise racine et ses trois attributs</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>&lt;html lang="fr" data-theme="dark" dir="ltr"&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle ouvre la balise <code>&lt;html&gt;</code>, qui va contenir <em>toute</em> la page, et lui donne trois informations : la langue, le thème et le sens de lecture.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Toutes les autres balises doivent être rangées dans une seule boîte principale, appelée la <dfn>racine</dfn>. Ses attributs s'appliquent à toute la page.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le navigateur recréerait une racine tout seul, mais sans aucun des trois attributs : la langue serait inconnue, notre futur thème sombre n'aurait plus de point d'accroche, et la page serait moins bien comprise par les lecteurs d'écran.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>&lt;html</code><div><strong>La balise racine.</strong> Le chevron <code>&lt;</code> ouvre la balise, <code>html</code> est son nom. Elle sera refermée tout en bas du fichier, ligne 39, par <code>&lt;/html&gt;</code>.</div></li>
+                  <li><code data-hl>lang="fr"</code><div><strong>La langue de la page.</strong> <code>lang</code> est le nom de l'attribut, <code>fr</code> sa valeur (le code officiel du français). Les lecteurs d'écran choisissent la bonne voix, les navigateurs ne proposent pas de traduire, Google sait à quel public s'adresse la page.</div></li>
+                  <li><code data-hl>data-theme="dark"</code><div><strong>Notre étiquette de thème.</strong> Tous les attributs qui commencent par <code>data-</code> sont des attributs personnalisés : on invente la suite du nom (ici <code>theme</code>). La valeur <code>dark</code> (« sombre ») ne fait <em>rien</em> pour l'instant : le CSS de l'épisode 2 s'y branchera, et un bouton JavaScript la changera en <code>light</code> (« clair »). Attention : Bootstrap utilise son propre attribut, <code>data-bs-theme</code> ; notre <code>data-theme</code> ne le concerne pas.</div></li>
+                  <li><code data-hl>dir="ltr"</code><div><strong>Le sens de lecture.</strong> <code>dir</code> pour « direction », <code>ltr</code> pour <i lang="en">left to right</i>, « de gauche à droite », comme en français. L'inverse serait <code>rtl</code>, pour l'arabe ou l'hébreu.</div></li>
+                  <li><code data-hl>&gt;</code><div><strong>Fin de la balise ouvrante.</strong> Les attributs sont séparés par un espace et toujours écrits entre le nom de la balise et ce chevron.</div></li>
+                </ol>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>lang</code></dt><dd>Attribut « langue ». Il peut être placé sur n'importe quelle balise, par exemple pour une citation en anglais.</dd>
+                  <dt><code>fr</code></dt><dd>Code de langue du français. Il existe <code>en</code> (anglais), <code>es</code> (espagnol), <code>de</code> (allemand)…</dd>
+                  <dt><code>data-theme</code></dt><dd>Attribut de données personnalisé inventé pour le portfolio.</dd>
+                  <dt><code>dark</code></dt><dd>« Sombre » en anglais : la valeur de départ du thème.</dd>
+                  <dt><code>dir</code></dt><dd>Attribut « direction » du texte.</dd>
+                  <dt><code>ltr</code></dt><dd><i lang="en">Left to right</i> : de gauche à droite.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/html" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;html&gt;</a></li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Global_attributes/lang" target="_blank" rel="noopener" class="ext">MDN — L'attribut lang</a></li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Global_attributes/data-*" target="_blank" rel="noopener" class="ext">MDN — Les attributs data-*</a></li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Global_attributes/dir" target="_blank" rel="noopener" class="ext">MDN — L'attribut dir</a></li>
+                  <li><a href="https://getbootstrap.com/docs/5.3/customize/color-modes/" target="_blank" rel="noopener" class="ext">Bootstrap — Color modes (data-bs-theme)</a></li>
+                  <li>Termes à rechercher : <kbd>mdn attribut lang</kbd>, <kbd>mdn data-*</kbd>, <kbd>mdn attribut dir</kbd></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">« <strong>L</strong>angue, <strong>T</strong>hème, <strong>D</strong>irection » : la racine dit <em>qui parle</em>, <em>en quelle couleur</em> et <em>dans quel sens</em>.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 3 -->
+          <article class="fiche" data-file="index" data-line="3" id="l3">
+            <details>
+              <summary><span class="fiche-num">Ligne 3</span> <span class="fiche-label">L'ouverture de l'en-tête invisible</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>&lt;head&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle ouvre l'en-tête du document : une zone qui contient les informations <em>sur</em> la page (les métadonnées), les liens vers les fichiers externes et le titre de l'onglet.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Le navigateur lit le <code>&lt;head&gt;</code> en premier : il y apprend l'encodage, la langue des caractères, quels fichiers télécharger, avant d'afficher quoi que ce soit.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le navigateur essaierait de deviner où commence l'en-tête. Le code deviendrait ambigu, difficile à relire, et le validateur HTML signalerait des erreurs.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>head</code></dt><dd>« Tête » en anglais. À ne pas confondre avec <code>&lt;header&gt;</code>, une balise visible que nous verrons plus tard.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/head" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;head&gt;</a></li>
+                  <li>Terme à rechercher : <kbd>mdn head</kbd></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Le <code>head</code>, c'est la tête : on y <em>pense</em> la page, mais on ne la <em>voit</em> pas.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 4 -->
+          <article class="fiche" data-file="index" data-line="4" id="l4">
+            <details>
+              <summary><span class="fiche-num">Ligne 4</span> <span class="fiche-label">L'encodage des caractères</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;meta charset="UTF-8" /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle indique au navigateur comment traduire les octets du fichier en lettres : avec l'encodage <dfn>UTF-8</dfn>, qui connaît tous les caractères du monde, accents compris.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Un ordinateur ne stocke pas des lettres mais des nombres. L'encodage est le dictionnaire qui associe chaque nombre à une lettre. Si le navigateur utilise le mauvais dictionnaire, les « é » deviennent du charabia.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Selon le navigateur, « Supérieur » pourrait s'afficher « SupÃ©rieur » et « Réseaux » « RÃ©seaux ». Elle doit être placée tout en haut du <code>&lt;head&gt;</code>, avant tout texte accentué.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>&lt;meta</code><div><strong>Une balise de métadonnée.</strong> Elle n'a pas de balise fermante : c'est une <dfn>balise orpheline</dfn> (ou « vide »).</div></li>
+                  <li><code data-hl>charset="UTF-8"</code><div><strong>Le jeu de caractères.</strong> <code>charset</code> vient de <i lang="en">character set</i>, « jeu de caractères ».</div></li>
+                  <li><code data-hl>/&gt;</code><div><strong>La fermeture.</strong> La barre oblique avant le chevron est facultative en HTML5 : elle rappelle simplement que la balise n'a pas de partenaire fermant.</div></li>
+                </ol>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/meta" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;meta&gt;</a> (partie « Attributs », <code>charset</code>)</li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Glossary/UTF-8" target="_blank" rel="noopener" class="ext">MDN — UTF-8 (glossaire)</a></li>
+                  <li>Terme à rechercher : <kbd>mdn meta charset</kbd></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Pas de <code>charset</code>, pas d'accents : « UTF-8, les accents sont en fête ».</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 5 -->
+          <article class="fiche" data-file="index" data-line="5" id="l5">
+            <details>
+              <summary><span class="fiche-num">Ligne 5</span> <span class="fiche-label">Le viewport, clé du responsive</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle demande aux téléphones et tablettes d'afficher la page à la largeur réelle de leur écran, sans zoom de départ.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Par défaut, un smartphone fait comme s'il avait un écran d'ordinateur d'environ 980 pixels, puis il rétrécit tout pour que ça rentre. Avec cette ligne, la page est réellement adaptée au téléphone : c'est la condition du responsive.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Sur mobile, la page apparaîtrait en miniature, avec un texte minuscule qu'il faudrait agrandir avec deux doigts. La grille responsive de Bootstrap ne fonctionnerait pas correctement.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>name="viewport"</code><div><strong>Le nom de la métadonnée.</strong> Le <dfn>viewport</dfn> est la zone de l'écran dans laquelle la page est affichée.</div></li>
+                  <li><code data-hl>width=device-width</code><div><strong>Largeur = largeur de l'appareil.</strong> La page prend la largeur réelle de l'écran.</div></li>
+                  <li><code data-hl>initial-scale=1.0</code><div><strong>Zoom de départ à 100 %.</strong> Ni agrandi, ni réduit. Les deux réglages sont séparés par une virgule, dans la même valeur <code>content</code>.</div></li>
+                </ol>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/meta/name/viewport" target="_blank" rel="noopener" class="ext">MDN — &lt;meta name="viewport"&gt;</a></li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Glossary/Responsive_web_design" target="_blank" rel="noopener" class="ext">MDN — Conception web adaptative</a></li>
+                  <li>Terme à rechercher : <kbd>mdn meta viewport</kbd></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">« Viewport » = la <em>vue</em> par la <em>porte</em> : on règle la taille de la fenêtre par laquelle le téléphone regarde la page.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 6 -->
+          <article class="fiche" data-file="index" data-line="6" id="l6">
+            <details>
+              <summary><span class="fiche-num">Ligne 6</span> <span class="fiche-label">La description pour Google</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;meta name="description" content="Portfolio professionnel de Lucas Moreau – Technicien Supérieur Systèmes et Réseaux (TSSR) en recherche d'un premier poste, formé chez MODE 83 à Draguignan (Var). Disponible immédiatement en région PACA." /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle résume la page en une ou deux phrases. Google peut afficher ce texte sous le titre, dans ses résultats de recherche.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>C'est la « vitrine » du portfolio dans Google : un recruteur qui cherche « technicien systèmes réseaux Draguignan » lit ce résumé avant de cliquer. On y met le métier, l'objectif (premier poste), la formation et la zone géographique.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Rien ne changerait à l'écran, mais Google choisirait lui-même un extrait de la page, souvent moins pertinent.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>name="description"</code><div><strong>Le type de métadonnée :</strong> une description.</div></li>
+                  <li><code data-hl>content="…"</code><div><strong>Le texte du résumé.</strong> Il est entre guillemets doubles ; l'apostrophe de « d'un » ne pose donc aucun problème.</div></li>
+                </ol>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/meta/name" target="_blank" rel="noopener" class="ext">MDN — meta name</a> (valeur <code>description</code>)</li>
+                  <li><a href="https://developers.google.com/search/docs/crawling-indexing/special-tags" target="_blank" rel="noopener" class="ext">Google Search Central — balises meta prises en charge</a></li>
+                  <li>Terme à rechercher : <kbd>mdn meta description</kbd></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">La description, c'est votre « pitch d'ascenseur » pour Google.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 7 -->
+          <article class="fiche" data-file="index" data-line="7" id="l7">
+            <details>
+              <summary><span class="fiche-num">Ligne 7</span> <span class="fiche-label">Les mots-clés</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;meta name="keywords" content="TSSR, technicien systèmes et réseaux, emploi, recrutement, premier poste, réseaux, systèmes, Windows Server, Linux, Active Directory, cybersécurité, virtualisation, MODE 83, Draguignan, Var, PACA" /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle liste, séparés par des virgules, les mots-clés du profil : le métier, les compétences techniques et le secteur géographique.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>Elle fait partie du fichier de référence et récapitule le profil en un coup d'œil pour quiconque lit le code. <strong>Soyons honnêtes :</strong> la documentation officielle de Google indique que Google Search n'utilise pas cette balise. D'autres outils peuvent encore la lire, mais elle n'améliore pas le classement dans Google.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Aucun changement visible, ni pour le visiteur ni pour le classement dans Google.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>keywords</code></dt><dd>« Mots-clés » en anglais.</dd>
+                  <dt>Active Directory</dt><dd>L'annuaire de Microsoft qui gère les utilisateurs et ordinateurs d'une entreprise : une compétence clé du TSSR.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/meta/name" target="_blank" rel="noopener" class="ext">MDN — meta name</a> (valeur <code>keywords</code>)</li>
+                  <li><a href="https://developers.google.com/search/docs/crawling-indexing/special-tags" target="_blank" rel="noopener" class="ext">Google Search Central</a> : cherchez « keywords » dans la page (<kbd>Ctrl</kbd>+<kbd>F</kbd>)</li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Toujours vérifier une « astuce SEO » à la source : c'est le réflexe du technicien.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 8 -->
+          <article class="fiche" data-file="index" data-line="8" id="l8">
+            <details>
+              <summary><span class="fiche-num">Ligne 8</span> <span class="fiche-label">L'autorisation donnée aux robots</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;meta name="robots" content="index, follow" /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle autorise explicitement les moteurs de recherche à enregistrer la page dans leurs résultats (<code>index</code>) et à suivre ses liens (<code>follow</code>).</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>Un recruteur doit pouvoir trouver le portfolio. C'est déjà le comportement par défaut des moteurs ; l'écrire rend notre intention claire et visible.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Rien ne changerait : sans consigne, les robots indexent et suivent par défaut. En revanche, écrire <code>noindex</code> par erreur ferait disparaître la page de Google.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt>Robot (ou <i lang="en">crawler</i>)</dt><dd>Un programme de Google ou Bing qui parcourt automatiquement le Web pour découvrir les pages.</dd>
+                  <dt><code>index</code></dt><dd>« Mets cette page dans ton index », c'est-à-dire dans ta base de résultats.</dd>
+                  <dt><code>follow</code></dt><dd>« Suis les liens de cette page. »</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag" target="_blank" rel="noopener" class="ext">Google Search Central — Spécifications de la balise meta robots</a></li>
+                  <li>Terme à rechercher : <kbd>google meta robots</kbd></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">« Index » = <em>retiens-moi</em>, « follow » = <em>suis-moi</em>.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 9 -->
+          <article class="fiche" data-file="index" data-line="9" id="l9">
+            <details>
+              <summary><span class="fiche-num">Ligne 9</span> <span class="fiche-label">La couleur de la barre du navigateur</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;meta name="theme-color" content="#060d1a" /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle propose une couleur au navigateur pour habiller son interface, par exemple la barre d'adresse de Chrome sur Android.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p><code>#060d1a</code> est le bleu nuit qui sera la couleur de fond de notre thème sombre. Ainsi, sur mobile, la barre du navigateur se fondra avec la page.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le navigateur garderait sa couleur habituelle. Rien d'autre ne change. Tous les navigateurs ne l'appliquent pas ; sur ordinateur, vous ne verrez généralement aucune différence.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>#060d1a</code></dt><dd>Une couleur en <dfn>hexadécimal</dfn> : <code>#</code> puis 3 paires de caractères pour le rouge (<code>06</code>), le vert (<code>0d</code>) et le bleu (<code>1a</code>). Chaque paire va de <code>00</code> (aucune lumière) à <code>ff</code> (maximum). Ici, les trois valeurs sont très basses, avec un peu plus de bleu : un bleu presque noir.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/meta/name/theme-color" target="_blank" rel="noopener" class="ext">MDN — &lt;meta name="theme-color"&gt;</a></li>
+                  <li>Terme à rechercher : <kbd>mdn theme-color</kbd></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Le navigateur « s'habille » aux couleurs du portfolio.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 10 -->
+          <article class="fiche" data-file="index" data-line="10" id="l10">
+            <details>
+              <summary><span class="fiche-num">Ligne 10</span> <span class="fiche-label">L'auteur de la page</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;meta name="author" content="Lucas Moreau" /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle déclare l'auteur de la page : notre candidat, Lucas Moreau.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>Elle signe le document, comme un nom en bas d'une lettre. Pensez à y mettre votre propre nom quand vous personnaliserez le portfolio.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Aucun changement visible.</p>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/meta/name" target="_blank" rel="noopener" class="ext">MDN — meta name</a> (valeur <code>author</code>)</li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo"><code>author</code> = auteur : la signature invisible.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 12 -->
+          <article class="fiche" data-file="index" data-line="12" id="l12">
+            <details>
+              <summary><span class="fiche-num">Ligne 12</span> <span class="fiche-label">Préparer la connexion à Google Fonts</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle demande au navigateur d'ouvrir à l'avance la connexion vers le serveur de Google Fonts.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>Se connecter à un serveur prend un peu de temps. En le faisant tout de suite, les polices arriveront plus vite au moment de les télécharger. C'est une optimisation de vitesse.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Les polices se chargeraient quand même, juste un peu plus lentement.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>&lt;link</code><div><strong>Une balise de lien vers une ressource externe</strong> (orpheline, sans balise fermante).</div></li>
+                  <li><code data-hl>rel="preconnect"</code><div><strong>La relation :</strong> <code>rel</code> pour « relation ». <code>preconnect</code> : « pré-connecte-toi ».</div></li>
+                  <li><code data-hl>href="https://fonts.googleapis.com"</code><div><strong>L'adresse du serveur.</strong> <code>href</code> pour <i lang="en">hypertext reference</i>, « référence hypertexte ». C'est le serveur qui fournit les instructions de police.</div></li>
+                </ol>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Attributes/rel/preconnect" target="_blank" rel="noopener" class="ext">MDN — rel="preconnect"</a></li>
+                  <li><a href="https://fonts.google.com/" target="_blank" rel="noopener" class="ext">Google Fonts</a> : ces lignes sont générées par le bouton « Get embed code »</li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">On « frappe à la porte » du serveur avant d'avoir besoin d'entrer.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 13 -->
+          <article class="fiche" data-file="index" data-line="13" id="l13">
+            <details>
+              <summary><span class="fiche-num">Ligne 13</span> <span class="fiche-label">Préparer la connexion aux fichiers de police</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Même chose que la ligne 12, mais pour le second serveur de Google, <code>fonts.gstatic.com</code>, qui héberge les fichiers de police eux-mêmes.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>Google utilise deux serveurs : le premier donne les instructions, le second envoie les fichiers. On prépare les deux connexions.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Les polices arriveraient un peu plus tard. Si on oubliait seulement <code>crossorigin</code>, la connexion préparée ne pourrait pas être réutilisée pour les polices : l'optimisation serait perdue.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>crossorigin</code></dt><dd>« Origine croisée » : la ressource vient d'un <em>autre</em> domaine que notre page. Les polices sont toujours téléchargées dans ce mode particulier ; la connexion préparée doit donc l'être aussi. Cet attribut n'a pas besoin de valeur : sa simple présence suffit.</dd>
+                  <dt><code>gstatic</code></dt><dd>« Google static » : le serveur de Google pour les fichiers qui ne changent pas.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Attributes/crossorigin" target="_blank" rel="noopener" class="ext">MDN — L'attribut crossorigin</a></li>
+                  <li>Terme à rechercher : <kbd>mdn crossorigin</kbd></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Deux serveurs Google, deux <code>preconnect</code> ; le second, celui des fichiers, porte <code>crossorigin</code>.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 14 -->
+          <article class="fiche" data-file="index" data-line="14" id="l14">
+            <details>
+              <summary><span class="fiche-num">Ligne 14</span> <span class="fiche-label">Charger les trois polices</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@300;400;500;600&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&amp;display=swap" rel="stylesheet" /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle télécharge une <dfn>feuille de style</dfn> (un fichier CSS) fournie par Google, qui déclare nos trois polices et leurs épaisseurs.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Ces polices donnent son identité au portfolio : <strong>Syne</strong> pour les grands titres, <strong>IBM Plex Mono</strong> pour le côté « terminal », <strong>DM Sans</strong> pour le texte courant. Elles ne sont pas installées sur l'ordinateur des visiteurs : il faut les télécharger.</p>
+                <h4>Si on la supprimait</h4>
+                <p>À partir de l'épisode 2, le texte s'afficherait dans les polices de secours de l'ordinateur : le portfolio perdrait son identité visuelle.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>https://fonts.googleapis.com/css2</code><div><strong>L'adresse de l'API de Google Fonts.</strong> Tout ce qui suit le <code>?</code> sont des <dfn>paramètres</dfn> : des réglages envoyés au serveur.</div></li>
+                  <li><code data-hl>family=Syne:wght@400;500;600;700;800</code><div><strong>Première police :</strong> Syne, en 5 épaisseurs (<code>wght</code> = <i lang="en">weight</i>, « graisse »). 400 = normal, 700 = gras, 800 = très gras. Les valeurs sont séparées par des points-virgules.</div></li>
+                  <li><code data-hl>&amp;family=IBM+Plex+Mono:wght@300;400;500;600</code><div><strong>Deuxième police.</strong> Le <code>&amp;</code> sépare deux paramètres ; le <code>+</code> remplace les espaces du nom « IBM Plex Mono ».</div></li>
+                  <li><code data-hl>&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300</code><div><strong>Troisième police,</strong> avec deux réglages : <code>ital</code> (italique : 0 = droit, 1 = italique) et <code>wght</code>. <code>1,300</code> = italique en épaisseur 300.</div></li>
+                  <li><code data-hl>&amp;display=swap</code><div><strong>Afficher le texte tout de suite</strong> avec une police de secours, puis échanger (<i lang="en">swap</i>) dès que la vraie police est arrivée. Le visiteur n'attend jamais devant un écran vide.</div></li>
+                  <li><code data-hl>rel="stylesheet"</code><div><strong>La relation :</strong> ce fichier est une feuille de style. Ici, <code>rel</code> est écrit après <code>href</code> : l'ordre des attributs n'a aucune importance.</div></li>
+                </ol>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://fonts.google.com/specimen/Syne" target="_blank" rel="noopener" class="ext">Google Fonts — Syne</a> · <a href="https://fonts.google.com/specimen/IBM+Plex+Mono" target="_blank" rel="noopener" class="ext">IBM Plex Mono</a> · <a href="https://fonts.google.com/specimen/DM+Sans" target="_blank" rel="noopener" class="ext">DM Sans</a></li>
+                  <li><a href="https://developers.google.com/fonts/docs/css2" target="_blank" rel="noopener" class="ext">Google Fonts — CSS API (syntaxe family, wght, ital, display)</a></li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/link" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;link&gt;</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Syne pour le <strong>S</strong>pectacle (titres), Mono pour la <strong>M</strong>achine (terminal), DM Sans pour le <strong>D</strong>iscours (texte).</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 16 -->
+          <article class="fiche" data-file="index" data-line="16" id="l16">
+            <details>
+              <summary><span class="fiche-num">Ligne 16</span> <span class="fiche-label">Charger Bootstrap 5.3</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle charge la feuille de style de Bootstrap depuis le CDN jsDelivr.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Bootstrap fournit la grille responsive, les conteneurs et des composants comme la barre de navigation de l'épisode 3. Dans cet épisode, il nous donne la classe <code>container</code> (ligne 33) et un style de base propre.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le texte reprendrait la police à empattements du navigateur, avec une marge autour de la page, et la classe <code>container</code> n'aurait plus aucun effet.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>https://cdn.jsdelivr.net</code><div><strong>Le CDN jsDelivr,</strong> qui distribue gratuitement des bibliothèques open source.</div></li>
+                  <li><code data-hl>/npm/bootstrap@5.3.0</code><div><strong>Le paquet Bootstrap, version 5.3.0 exactement.</strong> Le <code>@</code> fixe la version : le fichier ne changera jamais sans votre accord.</div></li>
+                  <li><code data-hl>/dist/css/bootstrap.min.css</code><div><strong>Le fichier CSS prêt à l'emploi.</strong> <code>dist</code> = distribution, <code>.min</code> = <dfn>minifié</dfn> (sans espaces ni retours à la ligne, donc plus léger).</div></li>
+                </ol>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank" rel="noopener" class="ext">Bootstrap — Get started</a> (partie « Quick start », étape « Include Bootstrap's CSS and JS »)</li>
+                  <li><a href="https://www.jsdelivr.com/package/npm/bootstrap" target="_blank" rel="noopener" class="ext">jsDelivr — paquet bootstrap</a></li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Glossary/CDN" target="_blank" rel="noopener" class="ext">MDN — CDN (glossaire)</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Bootstrap = les « bottes » du projet : on les enfile une fois, et on marche plus vite ensuite.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 17 -->
+          <article class="fiche" data-file="index" data-line="17" id="l17">
+            <details>
+              <summary><span class="fiche-num">Ligne 17</span> <span class="fiche-label">Charger Font Awesome 6</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle charge la bibliothèque d'icônes Font Awesome, version 6.4.0, depuis le CDN cdnjs.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Le portfolio affichera des icônes partout (serveur, réseau, bouclier, e-mail…). Font Awesome les dessine comme du texte : elles restent nettes à toutes les tailles et prennent la couleur qu'on veut.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Aujourd'hui, aucun changement. À partir de l'épisode 3, les icônes seraient remplacées par des carrés vides ou rien du tout.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>https://cdnjs.cloudflare.com/ajax/libs</code><div><strong>Le CDN cdnjs,</strong> hébergé par Cloudflare.</div></li>
+                  <li><code data-hl>/font-awesome/6.4.0</code><div><strong>La bibliothèque et sa version.</strong></div></li>
+                  <li><code data-hl>/css/all.min.css</code><div><strong>Le fichier qui contient tous les styles d'icônes</strong> (<code>all</code> = « tous »), minifié.</div></li>
+                </ol>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://cdnjs.com/libraries/font-awesome" target="_blank" rel="noopener" class="ext">cdnjs — font-awesome</a></li>
+                  <li><a href="https://docs-v6.fontawesome.com/web/setup/get-started" target="_blank" rel="noopener" class="ext">Font Awesome — documentation v6</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Font Awesome = des icônes « en police » : on les écrit comme des lettres.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 18 -->
+          <article class="fiche" data-file="index" data-line="18" id="l18">
+            <details>
+              <summary><span class="fiche-num">Ligne 18</span> <span class="fiche-label">Charger Animate.css</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle charge Animate.css, version 4.1.1 : une collection d'animations d'apparition prêtes à l'emploi.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>Elle fait partie du socle de bibliothèques du portfolio de référence. Pour s'en servir, il suffit d'ajouter deux classes à un élément : <code>animate__animated</code> et le nom d'une animation, par exemple <code>animate__fadeIn</code> (voir le test facultatif de l'étape 13).</p>
+                <h4>Si on la supprimait</h4>
+                <p>Aucun changement visible dans cet épisode.</p>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://animate.style/" target="_blank" rel="noopener" class="ext">animate.style</a> (parties « Installation » et « Usage »)</li>
+                  <li><a href="https://cdnjs.com/libraries/animate.css" target="_blank" rel="noopener" class="ext">cdnjs — animate.css</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Animate.css : « animer » en ajoutant une classe, sans écrire une ligne d'animation.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 20 -->
+          <article class="fiche" data-file="index" data-line="20" id="l20">
+            <details>
+              <summary><span class="fiche-num">Ligne 20</span> <span class="fiche-label">Relier notre fichier config.js</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;script src="config.js"&gt;&lt;/script&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle charge et exécute notre propre fichier JavaScript <code>config.js</code>, situé dans le même dossier que <code>index.html</code>.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p><code>config.js</code> gérera plus tard la clé Formspree du formulaire de contact. Pour l'instant, il affiche seulement un message dans la Console : la preuve que la liaison fonctionne.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le message <code>config.js chargé ✔</code> n'apparaîtrait plus dans la Console. Et si la ligne est présente mais que le fichier est absent ou mal nommé, la Console affiche une erreur rouge (fichier introuvable).</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>&lt;script</code><div><strong>Balise de script :</strong> elle sert à exécuter du JavaScript.</div></li>
+                  <li><code data-hl>src="config.js"</code><div><strong>La source :</strong> le chemin du fichier. Pas de dossier devant le nom : le fichier est à côté de <code>index.html</code>. On parle de <dfn>chemin relatif</dfn>.</div></li>
+                  <li><code data-hl>&lt;/script&gt;</code><div><strong>La balise fermante, obligatoire</strong>, même quand il n'y a rien entre les deux. Contrairement à <code>&lt;link&gt;</code> et <code>&lt;meta&gt;</code>, <code>&lt;script&gt;</code> n'est jamais orpheline.</div></li>
+                </ol>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/script" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;script&gt;</a></li>
+                  <li>Terme à rechercher : <kbd>mdn script src</kbd></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo"><code>&lt;link&gt;</code> pour le style, <code>&lt;script&gt;</code> pour le programme, et <code>&lt;script&gt;</code> se ferme toujours.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 21 -->
+          <article class="fiche" data-file="index" data-line="21" id="l21">
+            <details>
+              <summary><span class="fiche-num">Ligne 21</span> <span class="fiche-label">Charger PDF.js</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"&gt;&lt;/script&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle charge PDF.js, version 3.11.174, la bibliothèque de Mozilla qui lit les fichiers PDF dans le navigateur.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>Plus tard dans la série, le portfolio saura importer un CV au format PDF et en extraire le texte (nom, compétences…) directement dans le navigateur, sans serveur.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Aucun changement visible aujourd'hui. Dans la Console, <code>pdfjsLib.version</code> afficherait une erreur au lieu de <code>'3.11.174'</code>.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>pdf.min.js</code></dt><dd>Le programme PDF.js, minifié (<code>.min</code>).</dd>
+                  <dt><code>3.11.174</code></dt><dd>Le numéro de version : <em>majeure.mineure.correctif</em>. Changer de version majeure (par exemple 3 vers 4) peut modifier le fonctionnement de la bibliothèque : on garde donc exactement celle du projet.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://mozilla.github.io/pdf.js/" target="_blank" rel="noopener" class="ext">PDF.js — site officiel</a></li>
+                  <li><a href="https://cdnjs.com/libraries/pdf.js" target="_blank" rel="noopener" class="ext">cdnjs — pdf.js</a> (choisir la version 3.11.174)</li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">PDF.js = le lecteur de PDF intégré à notre page.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 23 -->
+          <article class="fiche" data-file="index" data-line="23" id="l23">
+            <details>
+              <summary><span class="fiche-num">Ligne 23</span> <span class="fiche-label">Le favicon principal (32 × 32)</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png"&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle indique l'icône à afficher dans l'onglet du navigateur.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Un recruteur ouvre souvent plusieurs onglets : l'icône permet de retrouver le portfolio d'un coup d'œil et lui donne un aspect professionnel.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le navigateur afficherait une icône générique, ou tenterait de trouver un fichier <code>favicon.ico</code> à la racine, et une erreur de fichier introuvable pourrait apparaître dans la Console.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>rel="icon"</code><div><strong>La relation :</strong> ce fichier est l'icône de la page.</div></li>
+                  <li><code data-hl>type="image/png"</code><div><strong>Le format du fichier :</strong> une image PNG. Le navigateur sait ce qu'il va recevoir avant de le télécharger.</div></li>
+                  <li><code data-hl>sizes="32x32"</code><div><strong>La taille :</strong> 32 pixels sur 32. Le navigateur choisit l'icône la mieux adaptée parmi celles proposées.</div></li>
+                  <li><code data-hl>href="images/favicon-32x32.png"</code><div><strong>Le chemin :</strong> dans le dossier <code>images</code>, le fichier <code>favicon-32x32.png</code>. Le nom doit être <em>exactement</em> identique, majuscules comprises.</div></li>
+                </ol>
+                <p class="note">Cette ligne se termine par <code>&gt;</code> et non par <code>/&gt;</code> : en HTML5, les deux écritures sont valides pour une balise orpheline.</p>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Attributes/rel" target="_blank" rel="noopener" class="ext">MDN — L'attribut rel</a> (partie <code>icon</code>)</li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Glossary/Favicon" target="_blank" rel="noopener" class="ext">MDN — Favicon (glossaire)</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Favicon = « <em>favorite icon</em> », l'icône favorite de l'onglet.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 24 -->
+          <article class="fiche" data-file="index" data-line="24" id="l24">
+            <details>
+              <summary><span class="fiche-num">Ligne 24</span> <span class="fiche-label">Le favicon haute résolution (192 × 192)</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192x192.png"&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle propose une version plus grande de l'icône, en 192 × 192 pixels.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>Les écrans haute définition et les raccourcis sur l'écran d'accueil d'Android ont besoin d'une icône plus grande, sinon elle apparaît floue.</p>
+                <h4>Si on la supprimait</h4>
+                <p>L'icône 32 × 32 serait agrandie, et donc floue, sur ces écrans.</p>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Attributes/rel" target="_blank" rel="noopener" class="ext">MDN — L'attribut rel</a> (partie <code>icon</code>, attribut <code>sizes</code>)</li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Même ligne que la 23, seuls la taille et le nom de fichier changent.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 25 -->
+          <article class="fiche" data-file="index" data-line="25" id="l25">
+            <details>
+              <summary><span class="fiche-num">Ligne 25</span> <span class="fiche-label">Le favicon au format WebP</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;link rel="icon" type="image/webp" href="images/favicon-400x400.webp"&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle propose une troisième icône, au format WebP, en 400 × 400 pixels.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>WebP est un format d'image moderne, plus léger que PNG à qualité égale. Les navigateurs récents savent l'utiliser.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Les icônes PNG des lignes 23 et 24 suffiraient. Aucun changement visible.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>image/webp</code></dt><dd>Le type du fichier : une image WebP. Remarquez qu'il n'y a pas d'attribut <code>sizes</code> sur cette ligne.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Attributes/rel" target="_blank" rel="noopener" class="ext">MDN — L'attribut rel</a> (partie <code>icon</code>)</li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">WebP = « Web Picture » : l'image pensée pour le Web.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 26 -->
+          <article class="fiche" data-file="index" data-line="26" id="l26">
+            <details>
+              <summary><span class="fiche-num">Ligne 26</span> <span class="fiche-label">L'icône pour iPhone et iPad</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png"&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle fournit l'icône utilisée quand on ajoute la page à l'écran d'accueil d'un iPhone ou d'un iPad.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>Les appareils Apple n'utilisent pas les icônes <code>rel="icon"</code> pour l'écran d'accueil : ils cherchent cette relation spéciale, <code>apple-touch-icon</code>.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Sur iPhone, le raccourci afficherait une capture d'écran réduite de la page au lieu du logo.</p>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Attributes/rel" target="_blank" rel="noopener" class="ext">MDN — L'attribut rel</a> (partie « valeurs non standard », <code>apple-touch-icon</code>)</li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo"><em>Touch</em> = toucher : l'icône que l'on touche du doigt sur l'écran d'accueil.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 28 -->
+          <article class="fiche" data-file="index" data-line="28" id="l28">
+            <details>
+              <summary><span class="fiche-num">Ligne 28</span> <span class="fiche-label">Le titre de l'onglet</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;title&gt;Portfolio TSSR | Recherche d'emploi – Technicien Systèmes &amp;amp; Réseaux · MODE 83 Draguignan&lt;/title&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle donne son titre à la page. Il s'affiche dans l'onglet, dans les favoris et comme lien cliquable dans les résultats de Google.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>C'est obligatoire dans une page HTML valide, et c'est le texte le plus important pour les moteurs de recherche et les lecteurs d'écran (c'est la première chose annoncée à l'ouverture de la page). On y met le métier, l'objectif et la localisation.</p>
+                <h4>Si on la supprimait</h4>
+                <p>L'onglet afficherait le nom du fichier, « index.html ». Le validateur HTML signalerait une erreur.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>&lt;title&gt;</code> … <code data-hl>&lt;/title&gt;</code><div><strong>Une balise ouvrante et une fermante,</strong> avec le texte du titre entre les deux.</div></li>
+                  <li><code data-hl>&amp;amp;</code><div><strong>Une entité HTML</strong> (ou « référence de caractère ») : la façon propre d'écrire le caractère <code>&amp;</code>. En HTML, <code>&amp;</code> annonce le début d'une entité ; pour afficher un vrai « &amp; », on écrit donc <code>&amp;amp;</code> (<i lang="en">ampersand</i>). Elle commence par <code>&amp;</code> et finit toujours par un point-virgule.</div></li>
+                  <li><code>|</code>, <code>–</code>, <code>·</code><div><strong>Des séparateurs visuels</strong> (barre verticale, tiret, point médian) : ils découpent le titre en morceaux lisibles.</div></li>
+                </ol>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/title" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;title&gt;</a></li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Glossary/Character_reference" target="_blank" rel="noopener" class="ext">MDN — Référence de caractère (glossaire)</a></li>
+                  <li>Terme à rechercher : <kbd>mdn title</kbd>, <kbd>mdn référence de caractère</kbd></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Le <code>title</code> est l'étiquette de l'onglet ; <code>&amp;amp;</code> est « l'esperluette déguisée ».</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 29 -->
+          <article class="fiche" data-file="index" data-line="29" id="l29">
+            <details>
+              <summary><span class="fiche-num">Ligne 29</span> <span class="fiche-label">La fermeture de l'en-tête</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>&lt;/head&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle referme l'en-tête ouvert à la ligne 3. Tout ce qui est invisible est terminé.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Chaque balise ouverte doit être fermée, dans l'ordre inverse de son ouverture, comme des poupées russes.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le navigateur fermerait l'en-tête automatiquement en rencontrant <code>&lt;body&gt;</code>, mais le code deviendrait invalide et difficile à relire.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>&lt;/</code></dt><dd>La barre oblique signale une <dfn>balise fermante</dfn>.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/head" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;head&gt;</a></li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Glossary/Tag" target="_blank" rel="noopener" class="ext">MDN — Balise (glossaire)</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Ce qu'on ouvre, on le ferme : <code>&lt;head&gt;</code> … <code>&lt;/head&gt;</code>.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 31 -->
+          <article class="fiche" data-file="index" data-line="31" id="l31">
+            <details>
+              <summary><span class="fiche-num">Ligne 31</span> <span class="fiche-label">L'ouverture du corps visible</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>&lt;body&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle ouvre le corps de la page : tout ce qui sera écrit entre <code>&lt;body&gt;</code> et <code>&lt;/body&gt;</code> s'affiche à l'écran.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Elle sépare clairement le contenu visible (le corps) des informations techniques (la tête). Plus tard, le CSS appliquera la couleur de fond et la police à cette balise.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le navigateur créerait un corps tout seul, mais le code serait incomplet, et nos futurs réglages CSS sur <code>body</code> deviendraient difficiles à suivre.</p>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/body" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;body&gt;</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">La tête réfléchit, le <em>corps</em> se montre.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 32 -->
+          <article class="fiche" data-file="index" data-line="32" id="l32">
+            <details>
+              <summary><span class="fiche-num">Ligne 32</span> <span class="fiche-label">La zone de contenu principal</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;main id="main-content"&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle ouvre la zone de <strong>contenu principal</strong> de la page et lui donne un identifiant : <code>main-content</code>.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p><code>&lt;main&gt;</code> est une <dfn>balise sémantique</dfn> : elle ne change pas l'apparence, mais elle dit ce que <em>contient</em> la zone. Les lecteurs d'écran permettent d'y sauter directement. L'identifiant servira de cible au lien « Passer au contenu principal » ajouté à l'épisode 2.</p>
+                <h4>Si on la supprimait</h4>
+                <p>À l'écran, rien ne changerait. Mais les personnes qui utilisent un lecteur d'écran perdraient un repère, et le lien d'accessibilité de l'épisode 2 n'aurait plus de cible.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>&lt;main</code><div><strong>Le contenu principal.</strong> Il ne doit y avoir qu'un seul <code>&lt;main&gt;</code> visible par page.</div></li>
+                  <li><code data-hl>id="main-content"</code><div><strong>Un identifiant unique</strong> (<code>id</code>) : comme un numéro de sécurité sociale, il ne peut exister qu'une seule fois dans la page. On pourra le viser avec un lien <code>#main-content</code>, en CSS ou en JavaScript.</div></li>
+                </ol>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/main" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;main&gt;</a></li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Global_attributes/id" target="_blank" rel="noopener" class="ext">MDN — L'attribut id</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo"><code>main</code> = le plat principal du repas ; <code>id</code> = son étiquette unique.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 33 -->
+          <article class="fiche" data-file="index" data-line="33" id="l33">
+            <details>
+              <summary><span class="fiche-num">Ligne 33</span> <span class="fiche-label">Le conteneur Bootstrap</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>    &lt;div class="container"&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle crée une boîte qui centre le contenu et limite sa largeur selon la taille de l'écran.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Sur un très grand écran, un texte qui va d'un bord à l'autre devient illisible. La classe <code>container</code> de Bootstrap fixe une largeur maximale adaptée à chaque écran : 100 % sur un smartphone, puis 540, 720, 960, 1140 et jusqu'à 1320 pixels sur les grands écrans.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le texte serait collé au bord gauche de la fenêtre, sans marge, quelle que soit la taille de l'écran.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code data-hl>&lt;div</code><div><strong>Une boîte générique</strong> (<i lang="en">division</i>). Elle n'a aucun sens particulier : elle sert à regrouper et à mettre en page.</div></li>
+                  <li><code data-hl>class="container"</code><div><strong>Une classe :</strong> une étiquette réutilisable qui relie l'élément à un style. Contrairement à un <code>id</code>, la même classe peut être utilisée sur plusieurs éléments. Le style de <code>container</code> est fourni par Bootstrap (ligne 16).</div></li>
+                </ol>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://getbootstrap.com/docs/5.3/layout/containers/" target="_blank" rel="noopener" class="ext">Bootstrap — Containers</a> (tableau des largeurs maximales)</li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/div" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;div&gt;</a></li>
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Global_attributes/class" target="_blank" rel="noopener" class="ext">MDN — L'attribut class</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Le <em>container</em>, c'est le conteneur du camion : il donne une forme standard au chargement.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 34 -->
+          <article class="fiche" data-file="index" data-line="34" id="l34">
+            <details>
+              <summary><span class="fiche-num">Ligne 34</span> <span class="fiche-label">Le titre principal : le nom du candidat</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>      &lt;h1&gt;Lucas Moreau&lt;/h1&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle affiche « Lucas Moreau » comme titre principal de la page.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Le nom est la première chose qu'un recruteur doit lire. <code>&lt;h1&gt;</code> est le titre de niveau 1, le plus important : il n'y en a qu'un par page. Les lecteurs d'écran et Google s'en servent pour comprendre de quoi parle la page.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le nom disparaîtrait de la page, et elle n'aurait plus de titre principal.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>h1</code></dt><dd><i lang="en">Heading</i> 1, « titre de niveau 1 ». Il existe six niveaux, de <code>h1</code> à <code>h6</code>, comme les titres et sous-titres d'un livre.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/Heading_Elements" target="_blank" rel="noopener" class="ext">MDN — Les éléments de titre &lt;h1&gt; à &lt;h6&gt;</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Un seul <code>h1</code> par page, comme un seul nom sur la couverture d'un livre.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 35 -->
+          <article class="fiche" data-file="index" data-line="35" id="l35">
+            <details>
+              <summary><span class="fiche-num">Ligne 35</span> <span class="fiche-label">Le paragraphe : le métier</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>      &lt;p&gt;Technicien Supérieur Systèmes &amp;amp; Réseaux&lt;/p&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle affiche le métier du candidat dans un paragraphe, juste sous son nom.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Nom + métier : en deux lignes, le recruteur sait qui il a en face de lui.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Seul le nom resterait affiché.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>p</code></dt><dd><i lang="en">Paragraph</i>, « paragraphe » : un bloc de texte.</dd>
+                  <dt><code>&amp;amp;</code></dt><dd>L'entité qui affiche le caractère « &amp; » (voir la ligne 28).</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/p" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;p&gt;</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo"><code>p</code> comme <em>paragraphe</em>, et comme <em>profession</em> ici.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 36 -->
+          <article class="fiche" data-file="index" data-line="36" id="l36">
+            <details>
+              <summary><span class="fiche-num">Ligne 36</span> <span class="fiche-label">La fermeture du conteneur</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>    &lt;/div&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle referme le conteneur ouvert à la ligne 33.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Elle délimite exactement ce qui est rangé dans le conteneur : le titre et le paragraphe.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le navigateur fermerait la boîte tout seul plus loin, mais dès qu'on ajoutera d'autres sections, elles se retrouveraient enfermées par erreur dans ce conteneur.</p>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/div" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;div&gt;</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">L'indentation aide : <code>&lt;/div&gt;</code> est aligné sous son <code>&lt;div&gt;</code>.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 37 -->
+          <article class="fiche" data-file="index" data-line="37" id="l37">
+            <details>
+              <summary><span class="fiche-num">Ligne 37</span> <span class="fiche-label">La fermeture du contenu principal</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>  &lt;/main&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle referme la zone de contenu principal ouverte à la ligne 32.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Plus tard, le pied de page (<i lang="en">footer</i>) sera placé <em>après</em> <code>&lt;/main&gt;</code> : la fermeture indique où s'arrête le contenu principal.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le code serait invalide et la zone principale mal délimitée pour les lecteurs d'écran.</p>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/main" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;main&gt;</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">On ferme dans l'ordre inverse : d'abord <code>div</code>, ensuite <code>main</code>.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 38 -->
+          <article class="fiche" data-file="index" data-line="38" id="l38">
+            <details>
+              <summary><span class="fiche-num">Ligne 38</span> <span class="fiche-label">La fermeture du corps</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>&lt;/body&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle referme le corps de la page ouvert à la ligne 31. Tout le contenu visible est terminé.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>C'est juste avant cette ligne que, dans les épisodes suivants, nous placerons les scripts JavaScript de la page.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le navigateur s'en accommoderait, mais le validateur HTML le signalerait et le repère pour placer les scripts disparaîtrait.</p>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/body" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;body&gt;</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo"><code>&lt;/body&gt;</code> : fin de ce qu'on voit.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- Ligne 39 -->
+          <article class="fiche" data-file="index" data-line="39" id="l39">
+            <details>
+              <summary><span class="fiche-num">Ligne 39</span> <span class="fiche-label">La fin du document</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl>&lt;/html&gt;</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle referme la balise racine ouverte à la ligne 2. Le document est complet.</p>
+                <h4>Pourquoi elle est nécessaire</h4>
+                <p>Elle termine la « poupée russe » la plus grande. Rien ne doit être écrit après elle.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le navigateur fermerait le document tout seul, mais le fichier serait incomplet et le validateur le signalerait.</p>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/html" target="_blank" rel="noopener" class="ext">MDN — L'élément &lt;html&gt;</a></li>
+                  <li>Pour vérifier tout le fichier : le <a href="https://validator.w3.org/" target="_blank" rel="noopener" class="ext">validateur HTML du W3C</a> (onglet « Validate by File Upload »)</li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Première balise ouverte (ligne 2), dernière balise fermée (ligne 39).</p>
+              </div>
+            </details>
+          </article>
+        </div>
+
+        <h3 class="fiche-group-title">Le fichier <code>config.js</code></h3>
+        <p class="fiche-group-note">Ce fichier est écrit en JavaScript, pas en HTML. Il ne contient que 4 lignes dans cet épisode : son vrai contenu sera écrit dans l'épisode consacré au formulaire de contact.</p>
+
+        <div class="fiches">
+          <article class="fiche" data-file="config" data-line="1" id="c1">
+            <details>
+              <summary><span class="fiche-num">config.js · ligne 1</span> <span class="fiche-label">Ouvrir une fonction auto-exécutée</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl-js>(function () {</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle ouvre une <dfn>fonction</dfn> (un bloc de code) qui va s'exécuter immédiatement. On appelle ce modèle une <dfn>IIFE</dfn> (<i lang="en">Immediately Invoked Function Expression</i>), « fonction exécutée immédiatement ».</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>Tout ce qu'on écrira à l'intérieur restera privé : ça n'entrera pas en conflit avec les autres scripts de la page.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Le code fonctionnerait encore aujourd'hui, mais il deviendrait fragile quand le fichier grandira.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>function () {</code></dt><dd>Une fonction sans nom ; l'accolade <code>{</code> ouvre son contenu.</dd>
+                  <dt><code>(</code> au début</dt><dd>La parenthèse qui « emballe » la fonction, pour pouvoir l'exécuter tout de suite (ligne 4).</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Glossary/IIFE" target="_blank" rel="noopener" class="ext">MDN — IIFE (glossaire)</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo">Une IIFE, c'est une pièce fermée : ce qui s'y passe y reste.</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="fiche" data-file="config" data-line="2" id="c2">
+            <details>
+              <summary><span class="fiche-num">config.js · ligne 2</span> <span class="fiche-label">Le mode strict</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl-js>  'use strict';</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle active le <dfn>mode strict</dfn> : JavaScript devient plus exigeant et signale nos erreurs au lieu de les ignorer en silence.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>Pour un débutant, une erreur signalée vaut mieux qu'une erreur cachée : on la voit dans la Console et on peut la corriger.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Rien ne changerait aujourd'hui, mais certaines fautes de frappe futures passeraient inaperçues.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>;</code></dt><dd>Le point-virgule termine une instruction JavaScript, comme le point termine une phrase.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Strict_mode" target="_blank" rel="noopener" class="ext">MDN — Le mode strict</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo"><em>Strict</em> comme un bon formateur : il ne laisse passer aucune erreur.</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="fiche" data-file="config" data-line="3" id="c3">
+            <details>
+              <summary><span class="fiche-num">config.js · ligne 3</span> <span class="fiche-label">Le message de vérification</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl-js>  console.log('config.js chargé ✔');</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle écrit le message <code>config.js chargé ✔</code> dans la Console des outils de développement.</p>
+                <h4>Pourquoi elle est présente</h4>
+                <p>C'est une ligne <strong>temporaire</strong> de vérification : si le message apparaît, le fichier est bien relié à la page. Elle disparaîtra quand on écrira le vrai contenu du fichier.</p>
+                <h4>Si on la supprimait</h4>
+                <p>Aucun message : on ne pourrait plus vérifier facilement que <code>config.js</code> est chargé.</p>
+                <h4>Le vocabulaire</h4>
+                <dl class="vocab">
+                  <dt><code>console.log( )</code></dt><dd>Une commande de l'API du navigateur : « écris ceci dans la console ».</dd>
+                  <dt><code>'…'</code></dt><dd>Les apostrophes entourent du texte : on l'appelle une <dfn>chaîne de caractères</dfn>.</dd>
+                </dl>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Web/API/console/log_static" target="_blank" rel="noopener" class="ext">MDN — console.log()</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo"><code>console.log</code> = le « journal de bord » du développeur.</p>
+              </div>
+            </details>
+          </article>
+
+          <article class="fiche" data-file="config" data-line="4" id="c4">
+            <details>
+              <summary><span class="fiche-num">config.js · ligne 4</span> <span class="fiche-label">Fermer et exécuter la fonction</span></summary>
+              <div class="fiche-body">
+                <pre class="code-line"><code data-hl-js>})();</code></pre>
+                <h4>Ce que fait cette ligne</h4>
+                <p>Elle referme la fonction de la ligne 1 et l'exécute aussitôt.</p>
+                <h4>Décomposition</h4>
+                <ol class="decomp">
+                  <li><code>}</code><div>Ferme le contenu de la fonction (l'accolade ouverte ligne 1).</div></li>
+                  <li><code>)</code><div>Ferme la parenthèse qui emballe la fonction.</div></li>
+                  <li><code>()</code><div>Les deux parenthèses vides <strong>exécutent</strong> la fonction, maintenant.</div></li>
+                  <li><code>;</code><div>Termine l'instruction.</div></li>
+                </ol>
+                <h4>Si on la supprimait</h4>
+                <p>Erreur de syntaxe affichée en rouge dans la Console, et le message de la ligne 3 n'apparaîtrait jamais.</p>
+                <h4>Où trouver l'information</h4>
+                <ul class="sources">
+                  <li><a href="https://developer.mozilla.org/fr/docs/Glossary/IIFE" target="_blank" rel="noopener" class="ext">MDN — IIFE (glossaire)</a></li>
+                </ul>
+                <h4>Pour retenir</h4>
+                <p class="memo"><code>})();</code> : « je ferme, et je lance ! »</p>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ 7. CODE COMPLET ============ -->
+      <section class="card-section" id="code" aria-labelledby="titre-code" data-progress>
+        <p class="section-kicker">Partie 7</p>
+        <h2 id="titre-code">Le code complet de l'épisode 1</h2>
+        <p>Voici le code exact à avoir dans vos fichiers à la fin de l'épisode, <strong>sans les commentaires pédagogiques</strong>. Le bouton « Copier » copie exactement ce code.</p>
+
+        <div class="code-tabs" role="tablist" aria-label="Fichiers de l'épisode">
+          <button type="button" role="tab" class="code-tab" id="tab-index" aria-controls="panel-index" aria-selected="true">index.html</button>
+          <button type="button" role="tab" class="code-tab" id="tab-config" aria-controls="panel-config" aria-selected="false" tabindex="-1">config.js</button>
+        </div>
+
+        <div class="code-panel" role="tabpanel" id="panel-index" aria-labelledby="tab-index">
+          <div class="code-toolbar">
+            <p class="code-filename"><span aria-hidden="true">📄</span> portfolio-tssr/index.html · <span id="index-line-count">39</span> lignes</p>
+            <div class="code-actions">
+              <button type="button" class="btn btn-primary btn-copy" data-file="index" data-label="Copier le code complet"><span aria-hidden="true">📋</span> <span class="btn-text">Copier le code complet</span></button>
+              <button type="button" class="btn btn-secondary btn-download" data-file="index"><span aria-hidden="true">⬇</span> Télécharger index.html</button>
+              <button type="button" class="btn btn-ghost btn-wrap" aria-pressed="false">Retour à la ligne automatique</button>
+            </div>
+          </div>
+          <pre class="code-block" tabindex="0" aria-label="Code complet de index.html"><code id="code-index"></code></pre>
+          <noscript><p class="callout callout-warn">JavaScript est désactivé : le code complet ne peut pas s'afficher ici. Utilisez les fiches ligne par ligne.</p></noscript>
+        </div>
+
+        <div class="code-panel" role="tabpanel" id="panel-config" aria-labelledby="tab-config" hidden>
+          <div class="code-toolbar">
+            <p class="code-filename"><span aria-hidden="true">📄</span> portfolio-tssr/config.js · 4 lignes</p>
+            <div class="code-actions">
+              <button type="button" class="btn btn-primary btn-copy" data-file="config" data-label="Copier config.js"><span aria-hidden="true">📋</span> <span class="btn-text">Copier config.js</span></button>
+              <button type="button" class="btn btn-secondary btn-download" data-file="config"><span aria-hidden="true">⬇</span> Télécharger config.js</button>
+            </div>
+          </div>
+          <pre class="code-block" tabindex="0" aria-label="Code complet de config.js"><code id="code-config"></code></pre>
+        </div>
+
+        <p class="note">Les numéros de ligne s'affichent à côté du code mais ne sont jamais copiés. Vous pouvez aussi sélectionner une partie du code à la souris et la copier avec <kbd>Ctrl</kbd>+<kbd>C</kbd>.</p>
+      </section>
+
+      <!-- ============ 8. RÉSULTAT ============ -->
+      <section class="card-section" id="resultat" aria-labelledby="titre-resultat" data-progress>
+        <p class="section-kicker">Partie 8</p>
+        <h2 id="titre-resultat">Résultat dans le navigateur</h2>
+        <p>Voici ce que vous devez voir après avoir ouvert <code>index.html</code> :</p>
+
+        <figure class="browser-mock">
+          <div class="browser-chrome" aria-hidden="true">
+            <div class="browser-tab">
+              <img src="images/favicon-32x32.png" alt="" width="16" height="16" />
+              <span>Portfolio TSSR | Recherche d'emploi – Technicien Systèmes &amp; Réseaux · MODE 83 Draguignan</span>
+            </div>
+            <div class="browser-address">file:///…/portfolio-tssr/index.html</div>
+          </div>
+          <div class="browser-viewport">
+            <div class="mock-container">
+              <p class="mock-h1">Lucas Moreau</p>
+              <p class="mock-p">Technicien Supérieur Systèmes &amp; Réseaux</p>
+            </div>
+          </div>
+          <figcaption>Reconstitution de la page : le favicon et le titre dans l'onglet, puis le nom et le métier, en noir sur fond blanc, dans la police système appliquée par Bootstrap.</figcaption>
+        </figure>
+
+        <div class="callout callout-success">
+          <p class="callout-title"><span aria-hidden="true">✅</span> C'est normal si votre page paraît encore très simple</p>
+          <p>Dans les épisodes suivants, nous ajouterons progressivement le CSS, la navigation, les cartes, les animations, les compétences, les projets, les expériences, le formulaire, etc.</p>
+          <p>Et le thème sombre ? L'attribut <code>data-theme="dark"</code> est bien présent, mais aucun CSS ne l'utilise encore : la page reste donc noire sur blanc. Le fond bleu nuit apparaîtra à l'épisode 2.</p>
+        </div>
+
+        <h3>Ce que vous voyez dans les outils de développement (<kbd>F12</kbd>)</h3>
+        <ul class="check-list">
+          <li>Onglet <strong>Console</strong> : le message <code>config.js chargé ✔</code>.</li>
+          <li>Onglet <strong>Réseau</strong> (après <kbd>F5</kbd>) : Bootstrap, Font Awesome, Animate.css, la feuille Google Fonts, PDF.js, <code>config.js</code> et un favicon, avec le statut <strong>200</strong>.</li>
+          <li>Onglet <strong>Éléments</strong> : la structure <code>html › head</code> et <code>html › body › main › div › h1 + p</code>.</li>
+        </ul>
+      </section>
+
+      <!-- ============ 9. TESTS ============ -->
+      <section class="card-section" id="tests" aria-labelledby="titre-tests" data-progress>
+        <p class="section-kicker">Partie 9</p>
+        <h2 id="titre-tests">Test de validation</h2>
+        <p>Vérifiez chaque point, cochez, puis validez votre épisode.</p>
+
+        <fieldset class="checklist" data-checklist="tests" id="tests-checklist">
+          <legend>Ma vérification</legend>
+          <ul>
+            <li><label><input type="checkbox" /> <span>Le fichier s'appelle bien <code>index.html</code> (et non <code>index.html.txt</code>).</span></label></li>
+            <li><label><input type="checkbox" /> <span>Le navigateur ouvre correctement la page.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Le titre <strong>Lucas Moreau</strong> apparaît en grand.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Le métier apparaît en dessous.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Aucun caractère bizarre ne remplace les accents de « Supérieur » et « Réseaux », et le « &amp; » s'affiche correctement.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Les ressources externes se chargent : la police est sans empattements (Bootstrap), et l'onglet <strong>Réseau</strong> n'affiche aucune ligne rouge.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Le favicon apparaît dans l'onglet.</span></label></li>
+            <li><label><input type="checkbox" /> <span>La Console affiche <code>config.js chargé ✔</code> et aucune erreur rouge.</span></label></li>
+            <li><label><input type="checkbox" /> <span>Le code HTML est correctement indenté (2 espaces par niveau).</span></label></li>
+          </ul>
+        </fieldset>
+
+        <button type="button" class="btn btn-primary btn-large" id="btn-valider"><span aria-hidden="true">✓</span> Valider mon épisode 1</button>
+        <div class="validation-message" id="validation-message" role="status" aria-live="polite"></div>
+      </section>
+
+      <!-- ============ 10. ERREURS FRÉQUENTES ============ -->
+      <section class="card-section" id="erreurs" aria-labelledby="titre-erreurs" data-progress>
+        <p class="section-kicker">Partie 10</p>
+        <h2 id="titre-erreurs">Si ça ne fonctionne pas</h2>
+        <p>Une erreur n'est pas un échec : c'est une information. Voici les erreurs les plus fréquentes, du symptôme à la solution.</p>
+
+        <div class="error-grid">
+          <article class="error-card">
+            <h3><span class="error-num">Erreur 1</span> Le fichier s'appelle <code>index.html.txt</code></h3>
+            <dl>
+              <dt>Symptôme</dt><dd>Le navigateur affiche le code au lieu de la page, ou le fichier s'ouvre dans le Bloc-notes.</dd>
+              <dt>Cause</dt><dd>Windows cache les extensions : le fichier a été enregistré comme texte.</dd>
+              <dt>Solution</dt><dd>Explorateur › <strong>Affichage</strong> › cocher <strong>Extensions de noms de fichiers</strong>, puis renommer en <code>index.html</code>. Le plus sûr : créer le fichier depuis VS Code.</dd>
+              <dt>Vérification</dt><dd>Dans VS Code, l'icône du fichier est orange avec <code>&lt;&gt;</code>, et le coin en bas à droite indique « HTML ».</dd>
+            </dl>
+          </article>
+          <article class="error-card">
+            <h3><span class="error-num">Erreur 2</span> Une balise mal fermée</h3>
+            <dl>
+              <dt>Symptôme</dt><dd>Le métier s'affiche en énorme, comme le nom, ou du texte comme <code>&lt;/h1</code> apparaît à l'écran.</dd>
+              <dt>Cause</dt><dd>Un chevron <code>&gt;</code>, une barre oblique <code>/</code> ou une balise fermante entière a été oubliée, par exemple <code>&lt;h1&gt;Lucas Moreau&lt;h1&gt;</code>.</dd>
+              <dt>Solution</dt><dd>Comparez la ligne avec la fiche correspondante. Chaque balise ouverte doit avoir sa fermante, dans l'ordre inverse.</dd>
+              <dt>Vérification</dt><dd>VS Code colore la balise partenaire quand vous cliquez sur une balise. Le <a href="https://validator.w3.org/" target="_blank" rel="noopener" class="ext">validateur du W3C</a> indique le numéro de la ligne fautive.</dd>
+            </dl>
+          </article>
+          <article class="error-card">
+            <h3><span class="error-num">Erreur 3</span> Une URL externe mal copiée</h3>
+            <dl>
+              <dt>Symptôme</dt><dd>La police reste à empattements : Bootstrap ne s'applique pas.</dd>
+              <dt>Cause</dt><dd>Une lettre manque ou est en trop dans l'adresse (par exemple <code>bootstrap@5.3.0</code> devenu <code>bootstrap@5.30</code>).</dd>
+              <dt>Solution</dt><dd>Recopiez l'adresse depuis le bouton « Copier » de la partie Code complet, plutôt que de la retaper.</dd>
+              <dt>Vérification</dt><dd><kbd>F12</kbd> › <strong>Réseau</strong> › <kbd>F5</kbd> : la ligne fautive apparaît en rouge avec le statut <strong>404</strong> (introuvable).</dd>
+            </dl>
+          </article>
+          <article class="error-card">
+            <h3><span class="error-num">Erreur 4</span> Le dossier <code>images</code> n'est pas au bon endroit</h3>
+            <dl>
+              <dt>Symptôme</dt><dd>Aucun favicon dans l'onglet.</dd>
+              <dt>Cause</dt><dd>Le dossier <code>images</code> est ailleurs (dans <code>ressources</code>, sur le Bureau…) alors que le chemin <code>images/…</code> le cherche <em>à côté</em> de <code>index.html</code>.</dd>
+              <dt>Solution</dt><dd>Déplacez le dossier <code>images</code> directement dans <code>portfolio-tssr</code>.</dd>
+              <dt>Vérification</dt><dd>Le panneau de gauche de VS Code doit ressembler à l'arborescence de la partie 3.</dd>
+            </dl>
+          </article>
+          <article class="error-card">
+            <h3><span class="error-num">Erreur 5</span> Le nom du favicon est incorrect</h3>
+            <dl>
+              <dt>Symptôme</dt><dd>Pas de favicon, alors que le dossier est au bon endroit.</dd>
+              <dt>Cause</dt><dd>Une différence entre le nom écrit dans le code et le vrai nom : <code>favicon-32X32.png</code> (X majuscule), <code>favicon_32x32.png</code> (tiret bas), extension <code>.jpg</code> au lieu de <code>.png</code>…</dd>
+              <dt>Solution</dt><dd>Copiez le nom exact du fichier (clic droit › Renommer, puis <kbd>Ctrl</kbd>+<kbd>C</kbd>) et collez-le dans le code.</dd>
+              <dt>Vérification</dt><dd><strong>Réseau</strong> : la ligne <code>favicon-32x32.png</code> doit avoir le statut 200. Pensez aussi à <kbd>Ctrl</kbd>+<kbd>F5</kbd> : le navigateur garde parfois l'ancienne icône en mémoire.</dd>
+            </dl>
+          </article>
+          <article class="error-card">
+            <h3><span class="error-num">Erreur 6</span> Un caractère supprimé accidentellement</h3>
+            <dl>
+              <dt>Symptôme</dt><dd>Une partie de la page disparaît, ou un morceau de code s'affiche à l'écran.</dd>
+              <dt>Cause</dt><dd>Un guillemet <code>"</code> ou un chevron effacé : le navigateur ne sait plus où finit l'attribut ou la balise, et « avale » la suite.</dd>
+              <dt>Solution</dt><dd>Dans VS Code, regardez les couleurs : après un guillemet manquant, toute la suite prend la couleur d'un texte entre guillemets. Remontez jusqu'à l'endroit où les couleurs changent.</dd>
+              <dt>Vérification</dt><dd>Les couleurs de VS Code redeviennent régulières ; l'onglet <strong>Éléments</strong> montre la bonne structure.</dd>
+            </dl>
+          </article>
+          <article class="error-card">
+            <h3><span class="error-num">Erreur 7</span> <code>config.js</code> introuvable</h3>
+            <dl>
+              <dt>Symptôme</dt><dd>Pas de message <code>config.js chargé ✔</code>, et une erreur rouge dans la Console (fichier introuvable, <code>ERR_FILE_NOT_FOUND</code> ou 404).</dd>
+              <dt>Cause</dt><dd>Le fichier n'existe pas, est mal nommé (<code>Config.js</code>, <code>config.js.txt</code>) ou n'est pas à côté de <code>index.html</code>.</dd>
+              <dt>Solution</dt><dd>Créez ou renommez le fichier <code>config.js</code> au même niveau que <code>index.html</code>.</dd>
+              <dt>Vérification</dt><dd>Après <kbd>F5</kbd>, le message apparaît dans la Console.</dd>
+            </dl>
+          </article>
+          <article class="error-card">
+            <h3><span class="error-num">Erreur 8</span> Les accents sont remplacés par des symboles</h3>
+            <dl>
+              <dt>Symptôme</dt><dd>« SupÃ©rieur » ou « Sup�rieur » au lieu de « Supérieur ».</dd>
+              <dt>Cause</dt><dd>La ligne <code>&lt;meta charset="UTF-8" /&gt;</code> manque, ou le fichier n'a pas été enregistré en UTF-8.</dd>
+              <dt>Solution</dt><dd>Vérifiez la ligne 4. Dans VS Code, la barre du bas doit indiquer <strong>UTF-8</strong> ; sinon, cliquez dessus › <strong>Enregistrer avec l'encodage</strong> › <strong>UTF-8</strong>.</dd>
+              <dt>Vérification</dt><dd>Après <kbd>F5</kbd>, les accents sont corrects.</dd>
+            </dl>
+          </article>
+          <article class="error-card">
+            <h3><span class="error-num">Erreur 9</span> Pas de connexion Internet</h3>
+            <dl>
+              <dt>Symptôme</dt><dd>Le texte s'affiche mais avec la police à empattements, et l'onglet Réseau est rempli de lignes rouges.</dd>
+              <dt>Cause</dt><dd>Bootstrap, les polices et les bibliothèques sont téléchargés depuis Internet (CDN) à chaque ouverture.</dd>
+              <dt>Solution</dt><dd>Vérifiez la connexion, puis <kbd>F5</kbd>. Votre code n'est pas en cause.</dd>
+              <dt>Vérification</dt><dd>Onglet Réseau : statut 200 partout.</dd>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ 11. QCM ============ -->
+      <section class="card-section" id="qcm" aria-labelledby="titre-qcm" data-progress>
+        <p class="section-kicker">Partie 11</p>
+        <h2 id="titre-qcm">Mini QCM</h2>
+        <p>10 questions pour vérifier ce que vous avez retenu. Choisissez une réponse : la correction s'affiche immédiatement. Vous pouvez changer d'avis.</p>
+
+        <form class="qcm" id="qcm-form" novalidate>
+          <fieldset class="question" data-answer="b">
+            <legend><span class="q-num">Question 1</span> À quoi sert <code>&lt;!DOCTYPE html&gt;</code> ?</legend>
+            <label><input type="radio" name="q1" value="a" /> <span>A. À afficher le titre</span></label>
+            <label><input type="radio" name="q1" value="b" /> <span>B. À déclarer un document HTML5</span></label>
+            <label><input type="radio" name="q1" value="c" /> <span>C. À charger Bootstrap</span></label>
+            <label><input type="radio" name="q1" value="d" /> <span>D. À créer une image</span></label>
+            <div class="feedback" aria-live="polite" hidden
+              data-why="Le DOCTYPE annonce au navigateur une page HTML5 et le fait passer en mode standard."
+              data-wrong-a="Le titre de l'onglet, c'est la balise &lt;title&gt; (ligne 28)."
+              data-wrong-c="Bootstrap est chargé par une balise &lt;link&gt; (ligne 16)."
+              data-wrong-d="Le DOCTYPE n'affiche rien du tout : il ne crée aucun élément visible."></div>
+          </fieldset>
+
+          <fieldset class="question" data-answer="c">
+            <legend><span class="q-num">Question 2</span> Dans <code>&lt;html lang="fr"&gt;</code>, que sont <code>lang</code> et <code>fr</code> ?</legend>
+            <label><input type="radio" name="q2" value="a" /> <span>A. Deux balises</span></label>
+            <label><input type="radio" name="q2" value="b" /> <span>B. Un commentaire</span></label>
+            <label><input type="radio" name="q2" value="c" /> <span>C. Le nom d'un attribut et sa valeur</span></label>
+            <label><input type="radio" name="q2" value="d" /> <span>D. Une URL</span></label>
+            <div class="feedback" aria-live="polite" hidden
+              data-why="Un attribut s'écrit nom=&quot;valeur&quot; dans la balise ouvrante : lang est le nom, fr la valeur."
+              data-wrong-a="Une balise s'écrit entre chevrons, comme &lt;html&gt;. lang et fr sont écrits à l'intérieur de la balise."
+              data-wrong-b="Un commentaire s'écrit entre &lt;!-- et --&gt;, et le navigateur l'ignore."
+              data-wrong-d="Une URL est une adresse, comme https://… ; fr est un code de langue."></div>
+          </fieldset>
+
+          <fieldset class="question" data-answer="a">
+            <legend><span class="q-num">Question 3</span> Pourquoi écrit-on <code>&lt;meta charset="UTF-8" /&gt;</code> ?</legend>
+            <label><input type="radio" name="q3" value="a" /> <span>A. Pour que les accents s'affichent correctement</span></label>
+            <label><input type="radio" name="q3" value="b" /> <span>B. Pour accélérer le chargement</span></label>
+            <label><input type="radio" name="q3" value="c" /> <span>C. Pour rendre la page responsive</span></label>
+            <label><input type="radio" name="q3" value="d" /> <span>D. Pour choisir la police</span></label>
+            <div class="feedback" aria-live="polite" hidden
+              data-why="UTF-8 est l'encodage qui associe correctement chaque caractère, accents compris."
+              data-wrong-b="L'accélération, c'est le rôle de preconnect (lignes 12 et 13)."
+              data-wrong-c="Le responsive dépend de la balise viewport (ligne 5)."
+              data-wrong-d="Les polices sont chargées par Google Fonts (ligne 14) et appliquées en CSS."></div>
+          </fieldset>
+
+          <fieldset class="question" data-answer="d">
+            <legend><span class="q-num">Question 4</span> Quelle est la différence entre <code>&lt;head&gt;</code> et <code>&lt;body&gt;</code> ?</legend>
+            <label><input type="radio" name="q4" value="a" /> <span>A. Aucune, ce sont deux noms pour la même chose</span></label>
+            <label><input type="radio" name="q4" value="b" /> <span>B. &lt;head&gt; est le haut de la page visible, &lt;body&gt; le bas</span></label>
+            <label><input type="radio" name="q4" value="c" /> <span>C. &lt;head&gt; contient le CSS, &lt;body&gt; le JavaScript</span></label>
+            <label><input type="radio" name="q4" value="d" /> <span>D. &lt;head&gt; contient les informations invisibles, &lt;body&gt; le contenu visible</span></label>
+            <div class="feedback" aria-live="polite" hidden
+              data-why="Le head décrit la page (métadonnées, liens, titre) ; le body contient ce que le visiteur voit."
+              data-wrong-a="Ce sont deux zones distinctes, avec des rôles différents."
+              data-wrong-b="Le head n'est pas visible du tout : ce n'est pas le haut de la page. Le haut visible sera un &lt;header&gt; dans le body."
+              data-wrong-c="Le head peut contenir des scripts (lignes 20 et 21), et le body peut aussi en contenir. Ce n'est pas le critère."></div>
+          </fieldset>
+
+          <fieldset class="question" data-answer="b">
+            <legend><span class="q-num">Question 5</span> Pourquoi écrit-on <code>&amp;amp;</code> dans « Systèmes &amp;amp; Réseaux » ?</legend>
+            <label><input type="radio" name="q5" value="a" /> <span>A. C'est une faute de frappe</span></label>
+            <label><input type="radio" name="q5" value="b" /> <span>B. C'est la façon propre d'écrire le caractère « &amp; » en HTML</span></label>
+            <label><input type="radio" name="q5" value="c" /> <span>C. Pour mettre le texte en gras</span></label>
+            <label><input type="radio" name="q5" value="d" /> <span>D. Pour créer un lien</span></label>
+            <div class="feedback" aria-live="polite" hidden
+              data-why="En HTML, &amp; annonce une entité. Pour afficher un vrai « &amp; », on écrit l'entité &amp;amp;."
+              data-wrong-a="Elle est volontaire : le navigateur affiche « &amp; » à l'écran."
+              data-wrong-c="Le gras s'obtient avec d'autres balises ou en CSS."
+              data-wrong-d="Un lien s'écrit avec la balise &lt;a&gt;."></div>
+          </fieldset>
+
+          <fieldset class="question" data-answer="c">
+            <legend><span class="q-num">Question 6</span> Qu'est-ce qu'un CDN ?</legend>
+            <label><input type="radio" name="q6" value="a" /> <span>A. Un éditeur de code</span></label>
+            <label><input type="radio" name="q6" value="b" /> <span>B. Un type de balise HTML</span></label>
+            <label><input type="radio" name="q6" value="c" /> <span>C. Un réseau de serveurs qui distribue des fichiers comme Bootstrap</span></label>
+            <label><input type="radio" name="q6" value="d" /> <span>D. Un format d'image</span></label>
+            <div class="feedback" aria-live="polite" hidden
+              data-why="Content Delivery Network : des serveurs répartis dans le monde, comme jsDelivr et cdnjs, qui envoient les fichiers depuis le serveur le plus proche."
+              data-wrong-a="L'éditeur de code, c'est VS Code."
+              data-wrong-b="Un CDN n'est pas une balise : c'est une infrastructure de serveurs."
+              data-wrong-d="Les formats d'image de l'épisode sont PNG et WebP."></div>
+          </fieldset>
+
+          <fieldset class="question" data-answer="a">
+            <legend><span class="q-num">Question 7</span> Où s'affiche le texte de la balise <code>&lt;title&gt;</code> ?</legend>
+            <label><input type="radio" name="q7" value="a" /> <span>A. Dans l'onglet du navigateur et dans les résultats de Google</span></label>
+            <label><input type="radio" name="q7" value="b" /> <span>B. En grand, en haut de la page</span></label>
+            <label><input type="radio" name="q7" value="c" /> <span>C. Dans la Console</span></label>
+            <label><input type="radio" name="q7" value="d" /> <span>D. Nulle part</span></label>
+            <div class="feedback" aria-live="polite" hidden
+              data-why="Le title est dans le head : il n'apparaît pas dans la page, mais dans l'onglet, les favoris et les résultats de recherche."
+              data-wrong-b="Le grand titre visible, c'est le &lt;h1&gt; (ligne 34)."
+              data-wrong-c="La Console affiche les messages de console.log, comme celui de config.js."
+              data-wrong-d="Il est bien visible : regardez l'onglet."></div>
+          </fieldset>
+
+          <fieldset class="question" data-answer="b">
+            <legend><span class="q-num">Question 8</span> La page reste noire sur fond blanc malgré <code>data-theme="dark"</code>. Pourquoi ?</legend>
+            <label><input type="radio" name="q8" value="a" /> <span>A. Il y a une erreur dans le code</span></label>
+            <label><input type="radio" name="q8" value="b" /> <span>B. Aucun CSS n'utilise encore cet attribut : c'est prévu pour l'épisode 2</span></label>
+            <label><input type="radio" name="q8" value="c" /> <span>C. Il faudrait écrire dark en majuscules</span></label>
+            <label><input type="radio" name="q8" value="d" /> <span>D. Le navigateur ne connaît pas le mode sombre</span></label>
+            <div class="feedback" aria-live="polite" hidden
+              data-why="data-theme est une étiquette personnalisée. Elle n'a d'effet que lorsque du CSS la lit, ce qui arrive à l'épisode 2."
+              data-wrong-a="Le code est correct : le résultat attendu est bien noir sur blanc."
+              data-wrong-c="La casse n'y changerait rien : aucun style ne lit encore cette valeur."
+              data-wrong-d="Le mode sombre est entièrement construit par notre propre CSS. Bootstrap, lui, utilise un autre attribut : data-bs-theme."></div>
+          </fieldset>
+
+          <fieldset class="question" data-answer="d">
+            <legend><span class="q-num">Question 9</span> Où voit-on le message <code>config.js chargé ✔</code> ?</legend>
+            <label><input type="radio" name="q9" value="a" /> <span>A. En haut de la page</span></label>
+            <label><input type="radio" name="q9" value="b" /> <span>B. Dans l'onglet du navigateur</span></label>
+            <label><input type="radio" name="q9" value="c" /> <span>C. Dans VS Code</span></label>
+            <label><input type="radio" name="q9" value="d" /> <span>D. Dans la Console des outils de développement (F12)</span></label>
+            <div class="feedback" aria-live="polite" hidden
+              data-why="console.log écrit dans la Console, que l'on ouvre avec F12."
+              data-wrong-a="console.log n'écrit jamais dans la page elle-même."
+              data-wrong-b="L'onglet affiche le contenu de &lt;title&gt;."
+              data-wrong-c="VS Code affiche le code, mais ne l'exécute pas : c'est le navigateur qui exécute config.js."></div>
+          </fieldset>
+
+          <fieldset class="question" data-answer="c">
+            <legend><span class="q-num">Question 10</span> Que signifie le chemin <code>images/favicon-32x32.png</code> ?</legend>
+            <label><input type="radio" name="q10" value="a" /> <span>A. Une adresse sur Internet</span></label>
+            <label><input type="radio" name="q10" value="b" /> <span>B. Le fichier favicon-32x32.png, rangé à côté de index.html</span></label>
+            <label><input type="radio" name="q10" value="c" /> <span>C. Le fichier favicon-32x32.png, dans le dossier images situé à côté de index.html</span></label>
+            <label><input type="radio" name="q10" value="d" /> <span>D. Une image de 32 Mo</span></label>
+            <div class="feedback" aria-live="polite" hidden
+              data-why="C'est un chemin relatif : on part du dossier de index.html, on entre dans images, puis on prend le fichier."
+              data-wrong-a="Une adresse Internet commence par https:// ; celle-ci est un chemin dans votre dossier."
+              data-wrong-b="La partie images/ indique un sous-dossier : le fichier n'est pas directement à côté de index.html."
+              data-wrong-d="32x32 désigne la taille en pixels : 32 de large sur 32 de haut."></div>
+          </fieldset>
+
+          <div class="qcm-footer">
+            <p class="qcm-score" id="qcm-score" role="status" aria-live="polite">Score : 0 / 10 — répondez aux questions.</p>
+            <button type="button" class="btn btn-ghost" id="btn-qcm-reset">Recommencer le QCM</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ============ 12. EXERCICE ============ -->
+      <section class="card-section" id="exercice" aria-labelledby="titre-exercice" data-progress>
+        <p class="section-kicker">Partie 12</p>
+        <h2 id="titre-exercice">Exercice pratique : votre propre identité</h2>
+
+        <h3>Consigne</h3>
+        <ol class="numbered">
+          <li>Dans <code>index.html</code>, remplacez <code>Lucas Moreau</code> par <strong>votre prénom et votre nom</strong>.</li>
+          <li>Remplacez <code>Technicien Supérieur Systèmes &amp;amp; Réseaux</code> par <strong>votre propre intitulé professionnel</strong>.</li>
+          <li>Enregistrez, actualisez, et vérifiez le résultat dans le navigateur.</li>
+        </ol>
+
+        <details class="hint">
+          <summary><span aria-hidden="true">💡</span> Afficher l'aide</summary>
+          <div class="hint-body">
+            <p>Ne touchez qu'au texte <em>entre</em> les balises : <code>&lt;h1&gt;</code><strong>ici</strong><code>&lt;/h1&gt;</code>. Les chevrons et les barres obliques doivent rester intacts.</p>
+            <p>Si votre intitulé contient le caractère « &amp; », écrivez-le <code>&amp;amp;</code>.</p>
+            <p>Bonus : votre nom apparaît aussi dans les métadonnées. Repérez la ligne 10 (<code>author</code>) et modifiez-la de la même façon.</p>
+          </div>
+        </details>
+
+        <button type="button" class="btn btn-secondary btn-reveal" aria-expanded="false" aria-controls="correction-exercice">Afficher la correction</button>
+        <div class="solution" id="correction-exercice" hidden>
+          <p>Exemple de correction pour une stagiaire nommée Camille Durand :</p>
+          <pre class="code-snippet"><code data-hl>      &lt;h1&gt;Camille Durand&lt;/h1&gt;
+
+      &lt;p&gt;Technicienne Supérieure Systèmes &amp;amp; Réseaux&lt;/p&gt;</code></pre>
+          <p>Et pour le bonus, ligne 10 :</p>
+          <pre class="code-snippet"><code data-hl>  &lt;meta name="author" content="Camille Durand" /&gt;</code></pre>
+          <p><strong>Vérification :</strong> votre nom s'affiche en grand, votre intitulé dessous, sans caractère étrange.</p>
+        </div>
+      </section>
+
+      <!-- ============ 13. DÉFI ============ -->
+      <section class="card-section" id="defi" aria-labelledby="titre-defi" data-progress>
+        <p class="section-kicker">Partie 13 · facultatif</p>
+        <h2 id="titre-defi">Défi pour aller plus loin</h2>
+        <p class="lead">Ajoutez une troisième ligne contenant votre ville, sous votre intitulé professionnel.</p>
+        <ul class="check-list">
+          <li>Utilisez uniquement des balises vues dans cet épisode.</li>
+          <li>Respectez l'indentation.</li>
+          <li>Question de réflexion : pourquoi ne faut-il <strong>pas</strong> mettre la ville dans un deuxième <code>&lt;h1&gt;</code> ?</li>
+        </ul>
+
+        <button type="button" class="btn btn-secondary btn-reveal" aria-expanded="false" aria-controls="correction-defi">Afficher la correction</button>
+        <div class="solution" id="correction-defi" hidden>
+          <pre class="code-snippet"><code data-hl>    &lt;div class="container"&gt;
+
+      &lt;h1&gt;Lucas Moreau&lt;/h1&gt;
+
+      &lt;p&gt;Technicien Supérieur Systèmes &amp;amp; Réseaux&lt;/p&gt;
+
+      &lt;p&gt;Draguignan (Var)&lt;/p&gt;
+
+    &lt;/div&gt;</code></pre>
+          <p>On utilise un deuxième paragraphe <code>&lt;p&gt;</code>, placé à l'intérieur du conteneur, avec la même indentation que les deux lignes au-dessus.</p>
+          <p><strong>Réponse à la question :</strong> <code>&lt;h1&gt;</code> est le titre principal, unique dans la page. Deux <code>&lt;h1&gt;</code> brouilleraient le message pour les lecteurs d'écran et pour Google : lequel est le vrai titre ? La ville est une information secondaire : un paragraphe suffit.</p>
+          <p class="note">Ce défi est un entraînement : le fichier de référence de l'épisode 1 ne contient pas cette troisième ligne. Retirez-la si vous voulez garder votre fichier identique au code de la série.</p>
+        </div>
+      </section>
+
+      <!-- ============ 14. ÉPISODE 2 ============ -->
+      <section class="card-section next-episode" id="episode-2" aria-labelledby="titre-episode-2" data-progress>
+        <p class="section-kicker">Partie 14 · la suite</p>
+        <h2 id="titre-episode-2">Dans l'épisode 2 : construire le système graphique</h2>
+        <p class="lead">Notre page est blanche, avec un nom et un métier. Dans l'épisode 2, en une trentaine de lignes de variables CSS, elle va complètement changer d'allure.</p>
+        <ul class="check-list">
+          <li>Le <strong>système de design</strong> de tout le portfolio : couleurs, polices, arrondis, ombres, et même un thème clair déjà prêt.</li>
+          <li>Le fond qui passe au <strong>bleu nuit</strong> <code>#060d1a</code>, le texte en gris clair dans la police <strong>DM Sans</strong> chargée aujourd'hui.</li>
+          <li>Votre attribut <code>data-theme="dark"</code> prend enfin tout son sens.</li>
+          <li>Un <strong>lien caché</strong> que seuls les utilisateurs du clavier découvriront… et qui visera notre <code>id="main-content"</code>.</li>
+        </ul>
+        <p>Tout ce que vous avez posé aujourd'hui va servir. Rendez-vous à l'épisode 2 !</p>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>Série « Portfolio TSSR » — Épisode 1 · Support pédagogique · Centre de Formation MODE 83, Draguignan.</p>
+    <p><a href="#haut">Revenir en haut de la page</a></p>
+  </footer>
+
+  <button type="button" class="back-to-top" id="btn-haut" aria-label="Revenir en haut de la page" hidden>
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <div class="visually-hidden" id="annonce" role="status" aria-live="polite"></div>
+</body>
+</html>
